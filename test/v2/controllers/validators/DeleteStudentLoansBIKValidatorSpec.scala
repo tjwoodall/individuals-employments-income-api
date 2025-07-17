@@ -78,6 +78,12 @@ class DeleteStudentLoansBIKValidatorSpec extends UnitSpec with MockEmploymentsAp
       }
     }
 
+    "return RuleTaxYearNotEndedError error" when {
+      "an unsupported tax year is supplied" in new Test {
+        validate(taxYear = "2025-26") shouldBe singleError(RuleTaxYearNotEndedError)
+      }
+    }
+
     "return EmploymentIdFormatError error" when {
       "an unsupported tax year is supplied" in new Test {
         validate(employmentId = "BAD_EMP_ID") shouldBe singleError(EmploymentIdFormatError)

@@ -20,8 +20,9 @@ import cats.data.Validated
 import cats.implicits._
 import config.EmploymentsAppConfig
 import shared.controllers.validators.Validator
-import shared.controllers.validators.resolvers.{ResolveNino, ResolveTaxYearMinimum, ResolverSupport}
-import shared.models.errors.MtdError
+import shared.controllers.validators.resolvers.{ResolveNino, ResolveTaxYearMinMax, ResolverSupport}
+import shared.models.domain.TaxYear
+import shared.models.errors.{MtdError, RuleTaxYearNotEndedError, RuleTaxYearNotSupportedError}
 import v2.controllers.validators.resolvers.ResolveEmploymentId
 import v2.models.request.deleteStudentLoansBIK.DeleteStudentLoansBIKRequest
 
@@ -30,7 +31,7 @@ class DeleteStudentLoansBIKValidator(nino: String, taxYear: String, employmentId
     with ResolverSupport {
 
   private val resolveTaxYear =
-    ResolveTaxYearMinimum(appConfig.studentLoansMinimumPermittedTaxYear).resolver
+    ResolveTaxYearMinMax.apply((appConfig.studentLoansMinimumPermittedTaxYear, TaxYear((TaxYear.currentTaxYear.year-1).toString)), RuleTaxYearNotSupportedError, RuleTaxYearNotEndedError).resolver
 
   override def validate: Validated[Seq[MtdError], DeleteStudentLoansBIKRequest] =
     (
