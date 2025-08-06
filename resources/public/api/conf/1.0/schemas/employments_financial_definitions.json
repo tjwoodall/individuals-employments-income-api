@@ -523,7 +523,7 @@
       "description": "The gross pay for this employment. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "totalTaxToDate": {
@@ -531,7 +531,7 @@
       "description": "The amount of tax deducted for this employment. The value must be between -99999999999.99 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": -99999999999.99,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "studentLoans": {
@@ -547,7 +547,7 @@
       "description": "The amount deducted for an undergraduate student loan. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "pglDeductionAmount": {
@@ -555,7 +555,7 @@
       "description": "The amount deducted for a postgraduate student loan. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "accommodation": {
@@ -563,7 +563,7 @@
       "description": "The value of accommodation costs provided by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "assets": {
@@ -571,7 +571,7 @@
       "description": "The value of any goods provided by the employer not exclusively used for work. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "assetTransfer": {
@@ -579,7 +579,7 @@
       "description": "The value of any company assets signed over by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "beneficialLoan": {
@@ -587,7 +587,7 @@
       "description": "The amount of interest free or low interest loans given by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "car": {
@@ -595,7 +595,7 @@
       "description": "The cash equivalent of any cars made available by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "carFuel": {
@@ -603,7 +603,7 @@
       "description": "The amount paid for fuel when using company cars. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "educationalServices": {
@@ -611,7 +611,7 @@
       "description": "Scholarships or school fees paid by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "entertaining": {
@@ -619,7 +619,7 @@
       "description": "Entertainment costs paid by the employer either directly or reimbursed to the employee. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "expenses": {
@@ -627,7 +627,7 @@
       "description": "Expenses reimbursed by the employer to the employee. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "medicalInsurance": {
@@ -635,7 +635,7 @@
       "description": "The sum of insurance premiums paid by the employer for medical or dental insurance. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "telephone": {
@@ -643,7 +643,7 @@
       "description": "Telephone costs paid by the employer that are not exempt. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "service": {
@@ -651,7 +651,7 @@
       "description": "Services used by an employee and paid for by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "taxableExpenses": {
@@ -659,7 +659,7 @@
       "description": "Taxable expenses reimbursed by the employer to the employee. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "van": {
@@ -667,7 +667,7 @@
       "description": "The cash equivalent of any vans made available by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "vanFuel": {
@@ -675,7 +675,7 @@
       "description": "The amount paid by the employer for fuel costs when using company vans. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "mileage": {
@@ -683,7 +683,7 @@
       "description": "The mileage amount paid over HMRC's approved rate by the employer for use of employee's own car for work. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "nonQualifyingRelocationExpenses": {
@@ -691,7 +691,7 @@
       "description": "Other costs involved in relocation paid for directly by the employer or reimbursed to the employee. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "nurseryPlaces": {
@@ -699,7 +699,7 @@
       "description": "Childcare costs paid by the employer or voucher or commercial childcare costs above the exempt limit. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "otherItems": {
@@ -707,7 +707,7 @@
       "description": "The value of any other benefits. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "paymentsOnEmployeesBehalf": {
@@ -715,7 +715,7 @@
       "description": "Other costs incurred by the employee paid for by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "personalIncidentalExpenses": {
@@ -723,7 +723,7 @@
       "description": "Incidental (non-business) expenses incurred by an employee while travelling on business. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "qualifyingRelocationExpenses": {
@@ -731,7 +731,7 @@
       "description": "Employer paid costs associated with employee relocation including bridging loans. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "employerProvidedProfessionalSubscriptions": {
@@ -739,7 +739,7 @@
       "description": "Professional fees and subscriptions paid for by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "employerProvidedServices": {
@@ -747,7 +747,7 @@
       "description": "The value of services provided by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "incomeTaxPaidByDirector": {
@@ -755,7 +755,7 @@
       "description": "Non PAYE Income Tax for directors deducted from the employer by HMRC. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "travelAndSubsistence": {
@@ -763,7 +763,7 @@
       "description": "The cost of any travel and subsistence (accommodation, meals and so on) paid for by the employer, that is not exempt. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "vouchersAndCreditCards": {
@@ -771,7 +771,7 @@
       "description": "The value of vouchers given by the employer and the expenditure of any employer provided credit cards. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     },
     "nonCash": {
@@ -779,7 +779,7 @@
       "description": "The value of any other non-cash benefits paid to the employee. The value must be between 0 and 99999999999.99 up to 2 decimal places.",
       "example": "1024.99",
       "minimum": 0,
-      "maximum:": 99999999999.99,
+      "maximum": 99999999999.99,
       "multipleOf": 0.01
     }
   }
