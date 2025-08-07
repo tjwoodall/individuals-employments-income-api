@@ -1,4 +1,4 @@
-summary: Retrieve Student Loan Benefits in Kind
+summary: Retrieve Student Loan Benefits in Kind{{#maybeTestOnly "2.0 student-loan-benefits-in-kind-retrieve"}}{{/maybeTestOnly}}
 description: |
   This endpoint allows you to retrieve information on Student Loan Benefits in Kind (BIK).
   
