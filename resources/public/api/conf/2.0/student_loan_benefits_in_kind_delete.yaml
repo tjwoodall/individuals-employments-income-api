@@ -1,4 +1,4 @@
-summary: Delete Student Loan Benefits in Kind
+summary: Delete Student Loan Benefits in Kind{{#maybeTestOnly "2.0 student-loan-benefits-in-kind-delete"}}{{/maybeTestOnly}}
 description: |
   This endpoint enables you to remove Student Loan Benefits in Kind (BIK) data
   
