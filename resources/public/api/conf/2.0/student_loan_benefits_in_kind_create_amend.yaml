@@ -1,4 +1,4 @@
-summary: Create or Amend Student Loan Benefits in Kind
+summary: Create or Amend Student Loan Benefits in Kind{{#maybeTestOnly "2.0 student-loan-benefits-in-kind-create-amend"}}{{/maybeTestOnly}}
 description: |
   This endpoint provides the ability to submit information on payrolled benefits which affect student loan repayments.
   
