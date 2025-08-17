@@ -38,11 +38,11 @@ responses:
       application/json:
         schema:
           $ref: './schemas/student_loan_benefits_in_kind_retrieve_response.json'
-          examples:
-            example-1:
-              description: Default Example
-              value:
-                $ref: './examples/studentLoanBIK/retrieve_response.json'
+        examples:
+          example-1:
+            description: Default Example
+            value:
+              $ref: './examples/studentLoanBIK/retrieve_response.json'
 
 
   "400":
