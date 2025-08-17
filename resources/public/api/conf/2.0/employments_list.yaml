@@ -24,6 +24,10 @@ parameters:
   - $ref: './common/headers.yaml#/components/parameters/authorizationReadScopeHeader'
   - $ref: './common/headers.yaml#/components/parameters/testScenarioHeader'
 
+security:
+  - User-Restricted:
+    - read:self-assessment
+
 responses:
   "200":
     description: Success
