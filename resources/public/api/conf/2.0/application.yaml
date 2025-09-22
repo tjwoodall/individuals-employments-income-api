@@ -9,6 +9,8 @@ info:
       * [Other Employment Income](#tag/Other-Employment-Income)
     
     
+      * [Student Loan Benefits in Kind](#tag/Student-Loan-Benefits-in-Kind)
+    
     
     The following endpoints are stateful in the Sandbox:
       * List Employments
@@ -19,6 +21,10 @@ info:
       * Retrieve an Employment and its Financial Details
       * Create and Amend Employment Financial Details
       * Delete Employment Financial Details
+    
+      * Create or Amend Student Loan Benefits in Kind
+      * Retreive Student Loan Benefits in Kind
+      * Delete Student Loan Benefits in Kind
     
     
     # Send fraud prevention data
@@ -77,6 +83,9 @@ tags:
     description: Resources relating to an individual's other employment income
 
   # 
+  - name: Student Loan Benefits in Kind
+    description: This endpoint allows you to create, amend, retrieve and delete information on Student Loan Benefits in Kind (BIK)
+  # 
 
 paths:
   /individuals/employments-income/{nino}/{taxYear}:
@@ -93,4 +102,7 @@ paths:
     $ref: "./employments_non_paye.yaml"
   /individuals/employments-income/other/{nino}/{taxYear}:
     $ref: "./employments_other.yaml"
+# 
+  /individuals/employments-income/{nino}/{taxYear}/{employmentId}/benefit-in-kind/student-loans:
+    $ref: "./student_loan_benefits_in_kind.yaml"
 # 
