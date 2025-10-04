@@ -168,6 +168,7 @@
           "deductions": {"$ref": "#/definitions/deductions"},
           "benefitsInKind": {"$ref": "#/definitions/benefitsInKind"}
         },
+        "additionalProperties": false,
         "required": [
           "pay"
         ]
