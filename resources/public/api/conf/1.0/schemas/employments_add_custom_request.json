@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Add Custom Employment Request",
   "description": "Add Custom Employment Request",
   "type": "object",

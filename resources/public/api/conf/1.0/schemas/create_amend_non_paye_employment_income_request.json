@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Create and Amend None-PAYE employment income Request",
   "description": "Create and Amend None-PAYE employment income Request",
   "type": "object",

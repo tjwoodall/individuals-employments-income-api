@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Retrieve Non-PAYE Employment Income Response",
   "description": "Retrieve Non-PAYE Employment Income Response",
   "type": "object",

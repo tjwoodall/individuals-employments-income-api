@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "TY 2022-23 and before",
   "description": "Retrieve an Employment and its Financial Details Response",
   "type": "object",

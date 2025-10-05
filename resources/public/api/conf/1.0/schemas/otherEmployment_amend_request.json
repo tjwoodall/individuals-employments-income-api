@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Create And Amend Other Employment Income Request",
   "description": "Create And Amend Other Employment Income Request",
   "type": "object",

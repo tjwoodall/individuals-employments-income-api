@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "TY 2023-24 onwards",
   "description": "Create And Amend Employment Financial Details Request",
   "type": "object",

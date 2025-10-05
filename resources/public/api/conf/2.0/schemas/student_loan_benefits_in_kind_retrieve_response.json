@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Retrieve Student Loan Benefits in Kind",
   "description": "This endpoint allows you to retrieve information on Student Loan Benefits in Kind (BIK).",
   "type": "object",

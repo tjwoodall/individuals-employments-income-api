@@ -1,5 +1,4 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "Retrieve Other Employment Income Request",
   "description": "Retrieve Other Employment Income Request",
   "type": "object",
