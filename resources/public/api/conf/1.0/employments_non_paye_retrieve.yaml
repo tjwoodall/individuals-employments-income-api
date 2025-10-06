@@ -43,16 +43,13 @@ responses:
         examples:
           user-example:
             description: User Provided Response
-            value:
-              $ref: './examples/nonPayeEmployments/retrieve_user_response.json'
+            externalValue: './examples/nonPayeEmployments/retrieve_user_response.json'
           hmrc-example:
             description: HMRC held Response
-            value:
-              $ref: './examples/nonPayeEmployments/retrieve_hmrc_response.json'
+            externalValue: './examples/nonPayeEmployments/retrieve_hmrc_response.json'
           latest-example:
             description: Latest Response
-            value:
-              $ref: './examples/nonPayeEmployments/retrieve_latest_response.json'
+            externalValue: './examples/nonPayeEmployments/retrieve_latest_response.json'
 
   "400":
     description: Bad request
