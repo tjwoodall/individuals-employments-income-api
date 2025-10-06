@@ -36,8 +36,7 @@ requestBody:
       examples:
         example-1:
           description: Default Example
-          value:
-            $ref: './examples/studentLoanBenefitInKind/create_amend_request.json'
+          externalValue: './examples/studentLoanBenefitInKind/create_amend_request.json'
 
 responses:
   "204":
