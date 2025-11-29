@@ -1,0 +1,805 @@
+openapi: 3.0.3
+info:
+  title: Individuals Employments Income (MTD)
+  description: "The following groups of endpoints are stateful in the Sandbox:\n \
+    \ * [Non-PAYE Employment Income](#tag/Non-PAYE-Employment-Income)\n  * [Other\
+    \ Employment Income](#tag/Other-Employment-Income)\n\nThe following endpoints\
+    \ are stateful in the Sandbox:\n  * List Employments\n  * Add a Custom Employment\n\
+    \  * Retrieve an Employment\n  * Amend a Custom Employment\n  * Delete a Custom\
+    \ Employment\n  * Retrieve an Employment and its Financial Details\n  * Create\
+    \ and Amend Employment Financial Details\n  * Delete Employment Financial Details\n\
+    \n\n# Send fraud prevention data\nHMRC monitors transactions to help protect your\
+    \ customers' confidential data from criminals and fraudsters. \n\n<div class=\"\
+    govuk-warning-text warning-icon-fix\">\n  <span class=\"govuk-warning-text__icon\
+    \ warning-icon-ui-fix\" aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\"\
+    >\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    You are\
+    \ required by law to submit header data for this API. This includes all associated\
+    \ APIs and endpoints.\n  </strong>\n</div>\n\n[Check the data you need to send](/guides/fraud-prevention/).\
+    \ You can also use the [Test API](/api-documentation/docs/api/service/txm-fph-validator-api/1.0)\
+    \ during initial development and as part of your quality assurance checks.\n\n\
+    # Mapping APIs to Self Assessment tax return forms\nSome parameters in this API\
+    \ map to box numbers in one or more Self Assessment tax return forms. To learn\
+    \ more and to download this mapping information as a CSV file, go to [income-tax-mtd-changelog/mapping](https://github.com/hmrc/income-tax-mtd-changelog?tab=readme-ov-file#mapping-apis-to-self-assessment-tax-return-forms)\
+    \ on GitHub.\n\n# Changelog\nYou can find the changelog in the [income-tax-mtd-changelog](https://github.com/hmrc/income-tax-mtd-changelog/#readme)\
+    \ on GitHub.\n\n# Support\n\n* Direct reports of bugs or errors in Production\
+    \ or Sandbox code, or queries about HMRC business functionality (such as how a\
+    \ specific field is used by HMRC or why it is needed) to the [Software Development\
+    \ Support Team (SDST)](https://developer.service.hmrc.gov.uk/developer/support).\n\
+    * Send queries or feedback related to the design of the APIs (including recommended\
+    \ changes) using the [income-tax-mtd-changelog](https://github.com/hmrc/income-tax-mtd-changelog/issues)\
+    \ GitHub page.\n* <a href=\"/contact/report-technical-problem?newTab=true&service=api-documentation-frontend\"\
+    \ target=\"_blank\">Is this page not working properly? (opens in new tab)</a>\n"
+  version: "1.0"
+servers:
+- url: https://test-api.service.hmrc.gov.uk
+  description: Sandbox
+- url: https://api.service.hmrc.gov.uk
+  description: Production
+tags:
+- name: Employments
+  description: "Resources relating to an individual's employments (please note, an\
+    \ occupational pension is classed as employment income and is identified by the\
+    \ occupationalPension property)"
+- name: Non-PAYE Employment Income
+  description: "These endpoints allow a user to create, amend, retrieve and delete\
+    \ Non-PAYE employment income and tips"
+- name: Other Employment Income
+  description: Resources relating to an individual's other employment income
+paths:
+  /individuals/employments-income/{nino}/{taxYear}:
+    get:
+      summary: List Employments
+      security:
+      - User-Restricted:
+        - read:self-assessment
+    post:
+      summary: Add a Custom Employment
+      security:
+      - User-Restricted:
+        - write:self-assessment
+  /individuals/employments-income/{nino}/{taxYear}/{employmentId}:
+    get:
+      summary: Retrieve an Employment
+      security:
+      - User-Restricted:
+        - read:self-assessment
+    put:
+      summary: Amend a Custom Employment
+      security:
+      - User-Restricted:
+        - write:self-assessment
+    delete:
+      summary: Delete a Custom Employment
+      security:
+      - User-Restricted:
+        - write:self-assessment
+  /individuals/employments-income/{nino}/{taxYear}/{employmentId}/ignore:
+    post:
+      tags:
+      - Employments
+      summary: Ignore Employment
+      description: |
+        This endpoint enables you to ignore an HMRC-provided employment from a list of employments.
+        <strong>This endpoint can only be used after the tax year has ended.</strong>
+        A National Insurance number, tax year and Employment ID must be provided.
+
+        ### Test data
+        Scenario simulation using Gov-Test-Scenario headers is only available in the sandbox environment.
+
+        | Header Value (Gov-Test-Scenario) | Scenario                                                          |
+        |----------------------------------|-------------------------------------------------------------------|
+        | N/A - DEFAULT                    | Simulates success response.                                       |
+        | CUSTOM_EMPLOYMENT                | Simulates the scenario where a custom employment is submitted.    |
+        | NOT_FOUND                        | Simulates the scenario where no data is found.                    |
+        | TAX_YEAR_NOT_ENDED               | Simulates the scenario where the tax year provided has not ended. |
+        | REQUEST_CANNOT_BE_FULFILLED      | Simulates the scenario where the request cannot be fulfilled for various reasons other than the ones triggering other errors.|
+      parameters:
+      - name: nino
+        in: path
+        description: |
+          National Insurance number, in the format `AA999999A`
+        required: true
+        schema:
+          type: string
+          example: TC663795B
+      - name: taxYear
+        in: path
+        description: "The tax year the data applies to, for example, 2021-22. \nThe\
+          \ start year and end year must not span two tax years. The minimum tax year\
+          \ is 2021-22. No gaps are allowed, for example, 2020-22 is not valid.\n\
+          (The minimum tax year in Sandbox is 2019-20.)\n"
+        required: true
+        schema:
+          type: string
+          example: 2021-22
+      - name: employmentId
+        in: path
+        description: |
+          The unique identifier for the employment.
+        required: true
+        schema:
+          pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          type: string
+          example: 4557ecb5-fd32-48cc-81f5-e6acd1099f3c
+      - name: Accept
+        in: header
+        description: |
+          Specifies the response format and the version of the API to be used.
+        required: true
+        schema:
+          type: string
+          enum:
+          - application/vnd.hmrc.1.0+json
+      - name: Authorization
+        in: header
+        description: |
+          An OAuth 2.0 Bearer Token with the *write:self-assessment* scope.
+        required: true
+        schema:
+          type: string
+          example: Bearer bb7fed3fe10dd235a2ccda3d50fb
+      - name: Gov-Test-Scenario
+        in: header
+        description: |
+          Only in sandbox environment. See Test Data table for all header values.
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          headers:
+            X-CorrelationId:
+              description: |
+                Unique ID for operation tracking
+                String, 36 characters.
+              required: true
+              schema:
+                type: string
+                example: c75f40a6-a3df-4429-a697-471eeec46435
+        "400":
+          description: Bad request
+          headers:
+            X-CorrelationId:
+              description: |
+                Unique ID for operation tracking
+                String, 36 characters.
+              required: true
+              schema:
+                type: string
+                example: c75f40a6-a3df-4429-a697-471eeec46435
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code
+                  message:
+                    type: string
+                    description: The error message
+                description: Error Response
+              examples:
+                FORMAT_NINO:
+                  description: The format of the supplied NINO field is not valid.
+                  value:
+                    code: FORMAT_NINO
+                    message: The provided NINO is invalid
+                FORMAT_TAX_YEAR:
+                  description: The format of the supplied tax year field is not valid.
+                  value:
+                    code: FORMAT_TAX_YEAR
+                    message: The provided tax year is invalid
+                FORMAT_EMPLOYMENT_ID:
+                  description: The format of the supplied employment ID field is not
+                    valid.
+                  value:
+                    code: FORMAT_EMPLOYMENT_ID
+                    message: The provided employment ID is invalid
+                RULE_TAX_YEAR_RANGE_INVALID:
+                  description: Tax year range invalid. A tax year range of one year
+                    is required.
+                  value:
+                    code: RULE_TAX_YEAR_RANGE_INVALID
+                    message: Tax year range invalid. A tax year range of one year
+                      is required
+                RULE_TAX_YEAR_NOT_SUPPORTED:
+                  description: |
+                    The specified tax year is not supported.
+                    Either the tax year specified is before the minimum tax year value, or it is after the maximum tax year value.
+                  value:
+                    code: RULE_TAX_YEAR_NOT_SUPPORTED
+                    message: The tax year specified does not lie within the supported
+                      range
+                RULE_TAX_YEAR_NOT_ENDED:
+                  description: The submission has been made before the tax year it
+                    relates to has ended.
+                  value:
+                    code: RULE_TAX_YEAR_NOT_ENDED
+                    message: Tax year not ended
+                RULE_CUSTOM_EMPLOYMENT:
+                  description: The Employment ID provided is for a custom (user-provided)
+                    employment.
+                  value:
+                    code: RULE_CUSTOM_EMPLOYMENT
+                    message: A custom employment cannot be ignored
+                RULE_INCORRECT_GOV_TEST_SCENARIO:
+                  description: The request did not match any available Sandbox data.
+                    Check that the supplied Gov-Test-Scenario is correct for this
+                    endpoint version. This error will only be returned in the Sandbox
+                    environment.
+                  value:
+                    code: RULE_INCORRECT_GOV_TEST_SCENARIO
+                    message: The supplied Gov-Test-Scenario is not valid
+        "403":
+          description: Forbidden
+          headers:
+            X-CorrelationId:
+              description: |
+                Unique ID for operation tracking
+                String, 36 characters.
+              required: true
+              schema:
+                type: string
+                example: c75f40a6-a3df-4429-a697-471eeec46435
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code
+                  message:
+                    type: string
+                    description: The error message
+                description: Error Response
+              examples:
+                CLIENT_OR_AGENT_NOT_AUTHORISED:
+                  description: "The client or agent is not authorised. This is because:\
+                    \ the client is not subscribed to MTD, \nthe agent is not subscribed\
+                    \ to Agent Services, or the client has not authorised the agent\
+                    \ to act on their behalf.\n"
+                  value:
+                    code: CLIENT_OR_AGENT_NOT_AUTHORISED
+                    message: The client and/or agent is not authorised
+        "404":
+          description: Not Found
+          headers:
+            X-CorrelationId:
+              description: |
+                Unique ID for operation tracking
+                String, 36 characters.
+              required: true
+              schema:
+                type: string
+                example: c75f40a6-a3df-4429-a697-471eeec46435
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code
+                  message:
+                    type: string
+                    description: The error message
+                description: Error Response
+              examples:
+                MATCHING_RESOURCE_NOT_FOUND:
+                  description: The supplied income source could not be found.
+                  value:
+                    code: MATCHING_RESOURCE_NOT_FOUND
+                    message: Matching resource not found
+        "422":
+          description: Unprocessable Entity
+          headers:
+            X-CorrelationId:
+              description: |
+                Unique ID for operation tracking
+                String, 36 characters.
+              required: true
+              schema:
+                type: string
+                example: c75f40a6-a3df-4429-a697-471eeec46435
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code
+                  message:
+                    type: string
+                    description: The error message
+                description: Error Response
+              examples:
+                RULE_REQUEST_CANNOT_BE_FULFILLED:
+                  description: The request cannot be fulfilled. More specific information
+                    is provided in the error message.
+                  value:
+                    code: RULE_REQUEST_CANNOT_BE_FULFILLED
+                    message: Custom (will vary in production depending on the actual
+                      error)
+      security:
+      - User-Restricted:
+        - write:self-assessment
+  /individuals/employments-income/{nino}/{taxYear}/{employmentId}/unignore:
+    post:
+      tags:
+      - Employments
+      summary: Unignore Employment
+      description: "This endpoint enables you to unignore the HMRC provided employment\
+        \ from a list of employments for this user.\n<strong>This endpoint can only\
+        \ be used after the tax year has ended.</strong>\nA National Insurance number,\
+        \ tax year and Employment ID must be provided.\n\n### Test data\nScenario\
+        \ simulation using Gov-Test-Scenario headers is only available in the sandbox\
+        \ environment.\n\n| Header Value (Gov-Test-Scenario) | Scenario          \
+        \                                                |\n|----------------------------------|-------------------------------------------------------------------|\n\
+        | N/A - DEFAULT                    | Simulates success response.         \
+        \                              |\n| CUSTOM_EMPLOYMENT                | Simulates\
+        \ the scenario where a custom employment is submitted.    |\n| NOT_FOUND \
+        \                       | Simulates the scenario where no data is found. \
+        \                   |\n| TAX_YEAR_NOT_ENDED               | Simulates the\
+        \ scenario where the tax year provided has not ended. | \n| REQUEST_CANNOT_BE_FULFILLED\
+        \      | Simulates the scenario where the request cannot be fulfilled for\
+        \ various reasons other than the ones triggering other errors.|\n"
+      parameters:
+      - name: nino
+        in: path
+        description: |
+          National Insurance number, in the format `AA999999A`
+        required: true
+        schema:
+          type: string
+          example: TC663795B
+      - name: taxYear
+        in: path
+        description: "The tax year the data applies to, for example, 2021-22. \nThe\
+          \ start year and end year must not span two tax years. The minimum tax year\
+          \ is 2021-22. No gaps are allowed, for example, 2020-22 is not valid.\n\
+          (The minimum tax year in Sandbox is 2019-20.)\n"
+        required: true
+        schema:
+          type: string
+          example: 2021-22
+      - name: employmentId
+        in: path
+        description: |
+          The unique identifier for the employment.
+        required: true
+        schema:
+          pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          type: string
+          example: 4557ecb5-fd32-48cc-81f5-e6acd1099f3c
+      - name: Accept
+        in: header
+        description: |
+          Specifies the response format and the version of the API to be used.
+        required: true
+        schema:
+          type: string
+          enum:
+          - application/vnd.hmrc.1.0+json
+      - name: Authorization
+        in: header
+        description: |
+          An OAuth 2.0 Bearer Token with the *write:self-assessment* scope.
+        required: true
+        schema:
+          type: string
+          example: Bearer bb7fed3fe10dd235a2ccda3d50fb
+      - name: Gov-Test-Scenario
+        in: header
+        description: |
+          Only in sandbox environment. See Test Data table for all header values.
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Success
+          headers:
+            X-CorrelationId:
+              description: |
+                Unique ID for operation tracking
+                String, 36 characters.
+              required: true
+              schema:
+                type: string
+                example: c75f40a6-a3df-4429-a697-471eeec46435
+        "400":
+          description: Bad request
+          headers:
+            X-CorrelationId:
+              description: |
+                Unique ID for operation tracking
+                String, 36 characters.
+              required: true
+              schema:
+                type: string
+                example: c75f40a6-a3df-4429-a697-471eeec46435
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code
+                  message:
+                    type: string
+                    description: The error message
+                description: Error Response
+              examples:
+                FORMAT_NINO:
+                  description: The format of the supplied NINO field is not valid.
+                  value:
+                    code: FORMAT_NINO
+                    message: The provided NINO is invalid
+                FORMAT_TAX_YEAR:
+                  description: The format of the supplied tax year field is not valid.
+                  value:
+                    code: FORMAT_TAX_YEAR
+                    message: The provided tax year is invalid
+                FORMAT_EMPLOYMENT_ID:
+                  description: The format of the supplied employment ID field is not
+                    valid.
+                  value:
+                    code: FORMAT_EMPLOYMENT_ID
+                    message: The provided employment ID is invalid
+                RULE_TAX_YEAR_RANGE_INVALID:
+                  description: Tax year range invalid. A tax year range of one year
+                    is required.
+                  value:
+                    code: RULE_TAX_YEAR_RANGE_INVALID
+                    message: Tax year range invalid. A tax year range of one year
+                      is required
+                RULE_TAX_YEAR_NOT_SUPPORTED:
+                  description: |
+                    The specified tax year is not supported.
+                    Either the tax year specified is before the minimum tax year value, or it is after the maximum tax year value.
+                  value:
+                    code: RULE_TAX_YEAR_NOT_SUPPORTED
+                    message: The tax year specified does not lie within the supported
+                      range
+                RULE_TAX_YEAR_NOT_ENDED:
+                  description: The submission has been made before the tax year it
+                    relates to has ended.
+                  value:
+                    code: RULE_TAX_YEAR_NOT_ENDED
+                    message: Tax year not ended
+                RULE_CUSTOM_EMPLOYMENT:
+                  description: The Employment ID provided is for a custom (user-provided)
+                    employment.
+                  value:
+                    code: RULE_CUSTOM_EMPLOYMENT
+                    message: A custom employment cannot be ignored
+                RULE_INCORRECT_GOV_TEST_SCENARIO:
+                  description: The request did not match any available Sandbox data.
+                    Check that the supplied Gov-Test-Scenario is correct for this
+                    endpoint version. This error will only be returned in the Sandbox
+                    environment.
+                  value:
+                    code: RULE_INCORRECT_GOV_TEST_SCENARIO
+                    message: The supplied Gov-Test-Scenario is not valid
+        "403":
+          description: Forbidden
+          headers:
+            X-CorrelationId:
+              description: |
+                Unique ID for operation tracking
+                String, 36 characters.
+              required: true
+              schema:
+                type: string
+                example: c75f40a6-a3df-4429-a697-471eeec46435
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code
+                  message:
+                    type: string
+                    description: The error message
+                description: Error Response
+              examples:
+                CLIENT_OR_AGENT_NOT_AUTHORISED:
+                  description: "The client or agent is not authorised. This is because:\
+                    \ the client is not subscribed to MTD, \nthe agent is not subscribed\
+                    \ to Agent Services, or the client has not authorised the agent\
+                    \ to act on their behalf.\n"
+                  value:
+                    code: CLIENT_OR_AGENT_NOT_AUTHORISED
+                    message: The client and/or agent is not authorised
+        "404":
+          description: Not Found
+          headers:
+            X-CorrelationId:
+              description: |
+                Unique ID for operation tracking
+                String, 36 characters.
+              required: true
+              schema:
+                type: string
+                example: c75f40a6-a3df-4429-a697-471eeec46435
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code
+                  message:
+                    type: string
+                    description: The error message
+                description: Error Response
+              examples:
+                MATCHING_RESOURCE_NOT_FOUND:
+                  description: The supplied income source could not be found.
+                  value:
+                    code: MATCHING_RESOURCE_NOT_FOUND
+                    message: Matching resource not found
+        "422":
+          description: Unprocessable Entity
+          headers:
+            X-CorrelationId:
+              description: |
+                Unique ID for operation tracking
+                String, 36 characters.
+              required: true
+              schema:
+                type: string
+                example: c75f40a6-a3df-4429-a697-471eeec46435
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                type: object
+                properties:
+                  code:
+                    type: string
+                    description: The error code
+                  message:
+                    type: string
+                    description: The error message
+                description: Error Response
+              examples:
+                RULE_REQUEST_CANNOT_BE_FULFILLED:
+                  description: The request cannot be fulfilled. More specific information
+                    is provided in the error message.
+                  value:
+                    code: RULE_REQUEST_CANNOT_BE_FULFILLED
+                    message: Custom (will vary in production depending on the actual
+                      error)
+      security:
+      - User-Restricted:
+        - write:self-assessment
+  /individuals/employments-income/{nino}/{taxYear}/{employmentId}/financial-details:
+    get:
+      summary: Retrieve an Employment and its Financial Details
+      security:
+      - User-Restricted:
+        - read:self-assessment
+    put:
+      summary: Create and Amend Employment Financial Details
+      security:
+      - User-Restricted:
+        - write:self-assessment
+    delete:
+      summary: Delete Employment Financial Details
+      security:
+      - User-Restricted:
+        - write:self-assessment
+  /individuals/employments-income/non-paye/{nino}/{taxYear}:
+    get:
+      summary: Retrieve Non-PAYE Employment Income
+      security:
+      - User-Restricted:
+        - read:self-assessment
+    put:
+      summary: Create and Amend Non-PAYE Employment Income
+      security:
+      - User-Restricted:
+        - write:self-assessment
+    delete:
+      summary: Delete Non-PAYE Employment Income
+      security:
+      - User-Restricted:
+        - write:self-assessment
+  /individuals/employments-income/other/{nino}/{taxYear}:
+    get:
+      summary: Retrieve Other Employment Income
+      security:
+      - User-Restricted:
+        - read:self-assessment
+    put:
+      summary: Create and Amend Other Employment Income
+      security:
+      - User-Restricted:
+        - write:self-assessment
+    delete:
+      summary: Delete Other Employment Income
+      security:
+      - User-Restricted:
+        - write:self-assessment
+components:
+  schemas:
+    error_response:
+      required:
+      - code
+      type: object
+      properties:
+        code:
+          type: string
+          description: The error code
+        message:
+          type: string
+          description: The error message
+      description: Error Response
+  parameters:
+    nino:
+      name: nino
+      in: path
+      description: |
+        National Insurance number, in the format `AA999999A`
+      required: true
+      schema:
+        type: string
+        example: TC663795B
+    taxYearMinimum2021:
+      name: taxYear
+      in: path
+      description: "The tax year the data applies to, for example, 2021-22. \nThe\
+        \ start year and end year must not span two tax years. The minimum tax year\
+        \ is 2021-22. No gaps are allowed, for example, 2020-22 is not valid.\n(The\
+        \ minimum tax year in Sandbox is 2019-20.)\n"
+      required: true
+      schema:
+        type: string
+        example: 2021-22
+    employmentId:
+      name: employmentId
+      in: path
+      description: |
+        The unique identifier for the employment.
+      required: true
+      schema:
+        pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        type: string
+        example: 4557ecb5-fd32-48cc-81f5-e6acd1099f3c
+    acceptHeader:
+      name: Accept
+      in: header
+      description: |
+        Specifies the response format and the version of the API to be used.
+      required: true
+      schema:
+        type: string
+        enum:
+        - application/vnd.hmrc.1.0+json
+    authorizationWriteScopeHeader:
+      name: Authorization
+      in: header
+      description: |
+        An OAuth 2.0 Bearer Token with the *write:self-assessment* scope.
+      required: true
+      schema:
+        type: string
+        example: Bearer bb7fed3fe10dd235a2ccda3d50fb
+    testScenarioHeader:
+      name: Gov-Test-Scenario
+      in: header
+      description: |
+        Only in sandbox environment. See Test Data table for all header values.
+      required: false
+      schema:
+        type: string
+  examples:
+    formatNino:
+      description: The format of the supplied NINO field is not valid.
+      value:
+        code: FORMAT_NINO
+        message: The provided NINO is invalid
+    formatTaxYear:
+      description: The format of the supplied tax year field is not valid.
+      value:
+        code: FORMAT_TAX_YEAR
+        message: The provided tax year is invalid
+    formatEmploymentId:
+      description: The format of the supplied employment ID field is not valid.
+      value:
+        code: FORMAT_EMPLOYMENT_ID
+        message: The provided employment ID is invalid
+    ruleTaxYearRangeInvalid:
+      description: Tax year range invalid. A tax year range of one year is required.
+      value:
+        code: RULE_TAX_YEAR_RANGE_INVALID
+        message: Tax year range invalid. A tax year range of one year is required
+    ruleTaxYearNotSupported:
+      description: |
+        The specified tax year is not supported.
+        Either the tax year specified is before the minimum tax year value, or it is after the maximum tax year value.
+      value:
+        code: RULE_TAX_YEAR_NOT_SUPPORTED
+        message: The tax year specified does not lie within the supported range
+    ruleTaxYearNotEnded:
+      description: The submission has been made before the tax year it relates to
+        has ended.
+      value:
+        code: RULE_TAX_YEAR_NOT_ENDED
+        message: Tax year not ended
+    ruleCustomEmployment:
+      description: The Employment ID provided is for a custom (user-provided) employment.
+      value:
+        code: RULE_CUSTOM_EMPLOYMENT
+        message: A custom employment cannot be ignored
+    ruleIncorrectGovTestScenario:
+      description: The request did not match any available Sandbox data. Check that
+        the supplied Gov-Test-Scenario is correct for this endpoint version. This
+        error will only be returned in the Sandbox environment.
+      value:
+        code: RULE_INCORRECT_GOV_TEST_SCENARIO
+        message: The supplied Gov-Test-Scenario is not valid
+    clientOrAgentNotAuthorised:
+      description: "The client or agent is not authorised. This is because: the client\
+        \ is not subscribed to MTD, \nthe agent is not subscribed to Agent Services,\
+        \ or the client has not authorised the agent to act on their behalf.\n"
+      value:
+        code: CLIENT_OR_AGENT_NOT_AUTHORISED
+        message: The client and/or agent is not authorised
+    notFound:
+      description: The supplied income source could not be found.
+      value:
+        code: MATCHING_RESOURCE_NOT_FOUND
+        message: Matching resource not found
+    requestCannotBeFulfilled:
+      description: The request cannot be fulfilled. More specific information is provided
+        in the error message.
+      value:
+        code: RULE_REQUEST_CANNOT_BE_FULFILLED
+        message: Custom (will vary in production depending on the actual error)
+  headers:
+    correlationId:
+      description: |
+        Unique ID for operation tracking
+        String, 36 characters.
+      required: true
+      schema:
+        type: string
+        example: c75f40a6-a3df-4429-a697-471eeec46435
+  securitySchemes:
+    User-Restricted:
+      type: oauth2
+      description: "HMRC supports OAuth 2.0 for authenticating [User-restricted](https://developer.service.hmrc.gov.uk/api-documentation/docs/authorisation/user-restricted-endpoints)\
+        \ API requests"
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.service.hmrc.gov.uk/oauth/authorize
+          tokenUrl: https://api.service.hmrc.gov.uk/oauth/token
+          refreshUrl: https://api.service.hmrc.gov.uk/oauth/refresh
+          scopes:
+            write:self-assessment: Grant write access
+            read:self-assessment: Grant read access
