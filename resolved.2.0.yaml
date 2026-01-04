@@ -668,17 +668,17 @@ paths:
         - write:self-assessment
   /individuals/employments-income/{nino}/{taxYear}/{employmentId}/benefit-in-kind/student-loans:
     get:
-      summary: "Retrieve Student Loan Benefits in Kind  [test only]"
+      summary: Retrieve Student Loan Benefits in Kind
       security:
       - User-Restricted:
         - read:self-assessment
     put:
-      summary: "Create or Amend Student Loan Benefits in Kind [test only]"
+      summary: Create or Amend Student Loan Benefits in Kind
       security:
       - User-Restricted:
         - write:self-assessment
     delete:
-      summary: "Delete Student Loan Benefits in Kind [test only]"
+      summary: Delete Student Loan Benefits in Kind
       security:
       - User-Restricted:
         - write:self-assessment
