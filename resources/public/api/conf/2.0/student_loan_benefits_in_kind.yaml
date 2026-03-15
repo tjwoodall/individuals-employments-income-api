@@ -1,6 +1,6 @@
 get:
   $ref: "./student_loan_benefits_in_kind_retrieve.yaml"
-  summary: Retrieve Student Loan Benefits in Kind 
+  summary: Retrieve Student Loan Benefits in Kind
   security:
     - User-Restricted:
         - read:self-assessment
