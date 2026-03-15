@@ -3,21 +3,21 @@ info:
   title: Individuals Employments Income (MTD)
   description: "The following groups of endpoints are stateful in the Sandbox:\n \
     \ * [Non-PAYE Employment Income](#tag/Non-PAYE-Employment-Income)\n  * [Other\
-    \ Employment Income](#tag/Other-Employment-Income)\n\n\n  * [Student Loan Benefits\
-    \ in Kind](#tag/Student-Loan-Benefits-in-Kind)\n\n\nThe following endpoints are\
+    \ Employment Income](#tag/Other-Employment-Income)\n  * [Student Loan Benefits\
+    \ in Kind](#tag/Student-Loan-Benefits-in-Kind)\n\nThe following endpoints are\
     \ stateful in the Sandbox:\n  * List Employments\n  * Add a Custom Employment\n\
     \  * Retrieve an Employment\n  * Amend a Custom Employment\n  * Delete a Custom\
     \ Employment\n  * Retrieve an Employment and its Financial Details\n  * Create\
     \ and Amend Employment Financial Details\n  * Delete Employment Financial Details\n\
-    \n  * Create or Amend Student Loan Benefits in Kind\n  * Retreive Student Loan\
-    \ Benefits in Kind\n  * Delete Student Loan Benefits in Kind\n\n\n# Send fraud\
-    \ prevention data\nHMRC monitors transactions to help protect your customers'\
-    \ confidential data from criminals and fraudsters. \n\n<div class=\"govuk-warning-text\
-    \ warning-icon-fix\">\n  <span class=\"govuk-warning-text__icon warning-icon-ui-fix\"\
-    \ aria-hidden=\"true\">!</span>\n  <strong class=\"govuk-warning-text__text\"\
-    >\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\n    You are\
-    \ required by law to submit header data for this API. This includes all associated\
-    \ APIs and endpoints.\n  </strong>\n</div>\n\n[Check the data you need to send](/guides/fraud-prevention/).\
+    \  * Create or Amend Student Loan Benefits in Kind\n  * Retreive Student Loan\
+    \ Benefits in Kind\n  * Delete Student Loan Benefits in Kind\n\n# Send fraud prevention\
+    \ data\nHMRC monitors transactions to help protect your customers' confidential\
+    \ data from criminals and fraudsters. \n\n<div class=\"govuk-warning-text warning-icon-fix\"\
+    >\n  <span class=\"govuk-warning-text__icon warning-icon-ui-fix\" aria-hidden=\"\
+    true\">!</span>\n  <strong class=\"govuk-warning-text__text\">\n    <span class=\"\
+    govuk-warning-text__assistive\">Warning</span>\n    You are required by law to\
+    \ submit header data for this API. This includes all associated APIs and endpoints.\n\
+    \  </strong>\n</div>\n\n[Check the data you need to send](/guides/fraud-prevention/).\
     \ You can also use the [Test API](/api-documentation/docs/api/service/txm-fph-validator-api/1.0)\
     \ during initial development and as part of your quality assurance checks.\n\n\
     # Mapping APIs to Self Assessment tax return forms\nSome parameters in this API\
