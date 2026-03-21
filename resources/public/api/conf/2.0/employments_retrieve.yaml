@@ -44,12 +44,10 @@ responses:
         examples:
           hmrc-employment:
             description: HMRC Employment
-            value:
-              $ref: './examples/employments/retrieve_response_hmrc.json'
+            externalValue: './examples/employments/retrieve_response_hmrc.json'
           custom-employment:
             description: Custom Employment
-            value:
-              $ref: './examples/employments/retrieve_response_custom.json'
+            externalValue: './examples/employments/retrieve_response_custom.json'
 
   "400":
     description: Bad request
