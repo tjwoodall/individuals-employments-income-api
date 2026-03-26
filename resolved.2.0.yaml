@@ -54,28 +54,23 @@ tags:
 paths:
   /individuals/employments-income/{nino}/{taxYear}:
     get:
-      summary: List Employments
       security:
       - User-Restricted:
         - read:self-assessment
     post:
-      summary: Add a Custom Employment
       security:
       - User-Restricted:
         - write:self-assessment
   /individuals/employments-income/{nino}/{taxYear}/{employmentId}:
     get:
-      summary: Retrieve an Employment
       security:
       - User-Restricted:
         - read:self-assessment
     put:
-      summary: Amend a Custom Employment
       security:
       - User-Restricted:
         - write:self-assessment
     delete:
-      summary: Delete a Custom Employment
       security:
       - User-Restricted:
         - write:self-assessment
@@ -620,65 +615,53 @@ paths:
         - write:self-assessment
   /individuals/employments-income/{nino}/{taxYear}/{employmentId}/financial-details:
     get:
-      summary: Retrieve an Employment and its Financial Details
       security:
       - User-Restricted:
         - read:self-assessment
     put:
-      summary: Create and Amend Employment Financial Details
       security:
       - User-Restricted:
         - write:self-assessment
     delete:
-      summary: Delete Employment Financial Details
       security:
       - User-Restricted:
         - write:self-assessment
   /individuals/employments-income/non-paye/{nino}/{taxYear}:
     get:
-      summary: Retrieve Non-PAYE Employment Income
       security:
       - User-Restricted:
         - read:self-assessment
     put:
-      summary: Create and Amend Non-PAYE Employment Income
       security:
       - User-Restricted:
         - write:self-assessment
     delete:
-      summary: Delete Non-PAYE Employment Income
       security:
       - User-Restricted:
         - write:self-assessment
   /individuals/employments-income/other/{nino}/{taxYear}:
     get:
-      summary: Retrieve Other Employment Income
       security:
       - User-Restricted:
         - read:self-assessment
     put:
-      summary: Create and Amend Other Employment Income
       security:
       - User-Restricted:
         - write:self-assessment
     delete:
-      summary: Delete Other Employment Income
       security:
       - User-Restricted:
         - write:self-assessment
   /individuals/employments-income/{nino}/{taxYear}/{employmentId}/benefit-in-kind/student-loans:
     get:
-      summary: Retrieve Student Loan Benefits in Kind
       security:
       - User-Restricted:
         - read:self-assessment
     put:
-      summary: Create or Amend Student Loan Benefits in Kind
       security:
       - User-Restricted:
         - write:self-assessment
     delete:
-      summary: Delete Student Loan Benefits in Kind
       security:
       - User-Restricted:
         - write:self-assessment
