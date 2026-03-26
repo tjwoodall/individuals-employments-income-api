@@ -62,10 +62,10 @@ tags:
 paths:
   /individuals/employments-income/{nino}/{taxYear}:
     get:
-      summary: List Employments
       security:
         - User-Restricted:
             - read:self-assessment
+      summary: List Employments
       description: |
         This endpoint allows a developer to list the employments for this user.
         A National Insurance number and Tax year must be provided.
@@ -192,13 +192,7 @@ paths:
                 example-response:
                   description: Example Response
                   value:
-                    employments:
-                      - employmentId: 1557ecb5-fd32-48cc-81f5-e6acd1099f1c
-                        employerName: Employer Name Ltd.
-                        dateIgnored: '2020-06-17T10:53:38.000Z'
-                    customEmployments:
-                      - employmentId: 2557ecb5-fd32-48cc-81f5-e6acd1099f2c
-                        employerName: Employer Name Ltd.
+                    $ref: ./examples/employments/list_response.json
         '400':
           description: Bad request
           headers:
@@ -327,10 +321,10 @@ paths:
                     code: RULE_REQUEST_CANNOT_BE_FULFILLED
                     message: Custom (will vary in production depending on the actual error)
     post:
-      summary: Add a Custom Employment
       security:
         - User-Restricted:
             - write:self-assessment
+      summary: Add a Custom Employment
       description: |
         This endpoint allows the developer to add an employment missing from the list of employments for this user.
         <strong>This endpoint can only be used after the tax year has ended.</strong>
@@ -436,21 +430,11 @@ paths:
               default-example:
                 description: Default Example
                 value:
-                  employerRef: 123/AB56797
-                  employerName: Employer Name Ltd.
-                  startDate: '2019-01-01'
-                  cessationDate: '2020-06-01'
-                  payrollId: YDIAHPcYFQbOXLCKQ
-                  occupationalPension: false
+                  $ref: ./examples/employments/add_request.json
               occupational-pension-example:
                 description: Example With Occupational Pension
                 value:
-                  employerRef: 123/AB56797
-                  employerName: Employer Name Ltd.
-                  startDate: '2019-01-01'
-                  cessationDate: '2020-06-01'
-                  payrollId: YDIAHPcYFQbOXLCKQ
-                  occupationalPension: true
+                  $ref: ./examples/employments/add_request_pension_true.json
       responses:
         '200':
           description: Success
@@ -482,7 +466,7 @@ paths:
                 example-response:
                   description: Example Response
                   value:
-                    employmentId: 4557ecb5-fd32-48cc-81f5-e6acd1099f3c
+                    $ref: ./examples/employments/add_response.json
         '400':
           description: Bad request
           headers:
@@ -622,10 +606,10 @@ paths:
                   value: *ref_13
   /individuals/employments-income/{nino}/{taxYear}/{employmentId}:
     get:
-      summary: Retrieve an Employment
       security:
         - User-Restricted:
             - read:self-assessment
+      summary: Retrieve an Employment
       description: |
         This endpoint allows the developer to retrieve details of an employment for this user.
         A National Insurance number, Tax year and Employment ID are required.
@@ -747,23 +731,11 @@ paths:
                 hmrc-employment:
                   description: HMRC Employment
                   value:
-                    employerRef: 123/AZ12334
-                    employerName: Employer Name Ltd.
-                    startDate: '2020-06-17'
-                    cessationDate: '2020-06-17'
-                    payrollId: YDIAHPcYFQbOXLCKQ
-                    occupationalPension: false
-                    dateIgnored: '2020-06-17T10:53:38.000Z'
+                    $ref: ./examples/employments/retrieve_response_hmrc.json
                 custom-employment:
                   description: Custom Employment
                   value:
-                    employerRef: 123/AZ12334
-                    employerName: Employer Name Ltd.
-                    startDate: '2020-06-17'
-                    cessationDate: '2020-06-17'
-                    payrollId: YDIAHPcYFQbOXLCKQ
-                    occupationalPension: false
-                    submittedOn: '2021-04-06T09:37:17.000Z'
+                    $ref: ./examples/employments/retrieve_response_custom.json
         '400':
           description: Bad request
           headers:
@@ -874,10 +846,10 @@ paths:
                   description: The request cannot be fulfilled. More specific information is provided in the error message.
                   value: *ref_13
     put:
-      summary: Amend a Custom Employment
       security:
         - User-Restricted:
             - write:self-assessment
+      summary: Amend a Custom Employment
       description: |
         This endpoint allows the developer to provide or update a custom employment from the list of employments for this user.
         <strong>This endpoint can only be used after the tax year has ended.</strong>
@@ -985,21 +957,11 @@ paths:
               default-example:
                 description: Default Example
                 value:
-                  employerRef: 123/AZ12334
-                  employerName: J Ltd.
-                  startDate: '2019-01-01'
-                  cessationDate: '2020-06-01'
-                  payrollId: A1234567
-                  occupationalPension: false
+                  $ref: ./examples/employments/amend_request.json
               occupational-pension-example:
                 description: Example With Occupational Pension
                 value:
-                  employerRef: 123/AZ12334
-                  employerName: J Ltd.
-                  startDate: '2019-01-01'
-                  cessationDate: '2020-06-01'
-                  payrollId: A1234567
-                  occupationalPension: true
+                  $ref: ./examples/employments/amend_request_pension_true.json
       responses:
         '200':
           description: Success
@@ -1158,10 +1120,10 @@ paths:
                   description: The request cannot be fulfilled. More specific information is provided in the error message.
                   value: *ref_13
     delete:
-      summary: Delete a Custom Employment
       security:
         - User-Restricted:
             - write:self-assessment
+      summary: Delete a Custom Employment
       description: |
         This endpoint allows the developer to delete a custom employment from the list of employments for this user.
         A National Insurance number, Tax year and Employment ID are required.
@@ -1731,10 +1693,10 @@ paths:
                   value: *ref_13
   /individuals/employments-income/{nino}/{taxYear}/{employmentId}/financial-details:
     get:
-      summary: Retrieve an Employment and its Financial Details
       security:
         - User-Restricted:
             - read:self-assessment
+      summary: Retrieve an Employment and its Financial Details
       description: |
         This endpoint enables you to retrieve employment information and associated financial data for a given tax year.
         A National Insurance number, tax year and Employment ID must be provided.
@@ -1778,7 +1740,7 @@ paths:
           description: |
             Specifies the source of data to be returned. If source is not provided,
             the latest submitted values will be returned.
-          schema: &ref_37
+          schema: &ref_35
             type: string
             enum:
               - user
@@ -2515,222 +2477,22 @@ paths:
               examples:
                 User provided financial details TY 22-23 and before:
                   value:
-                    submittedOn: '2020-01-04T05:01:01.000Z'
-                    customerAdded: '2020-04-04T01:01:01.000Z'
-                    employment:
-                      employer:
-                        employerRef: 223/AB12399
-                        employerName: Employer Name Ltd.
-                      pay:
-                        taxablePayToDate: 34234.15
-                        totalTaxToDate: 6782.92
-                      deductions:
-                        studentLoans:
-                          uglDeductionAmount: 13343.45
-                          pglDeductionAmount: 24242.56
-                      benefitsInKind:
-                        accommodation: 455.67
-                        assets: 435.54
-                        assetTransfer: 24.58
-                        beneficialLoan: 33.89
-                        car: 3434.78
-                        carFuel: 34.56
-                        educationalServices: 445.67
-                        entertaining: 434.45
-                        expenses: 3444.32
-                        medicalInsurance: 4542.47
-                        telephone: 243.43
-                        service: 45.67
-                        taxableExpenses: 24.56
-                        van: 56.29
-                        vanFuel: 14.56
-                        mileage: 34.23
-                        nonQualifyingRelocationExpenses: 54.62
-                        nurseryPlaces: 84.29
-                        otherItems: 67.67
-                        paymentsOnEmployeesBehalf: 67.23
-                        personalIncidentalExpenses: 74.29
-                        qualifyingRelocationExpenses: 78.24
-                        employerProvidedProfessionalSubscriptions: 84.56
-                        employerProvidedServices: 56.34
-                        incomeTaxPaidByDirector: 67.34
-                        travelAndSubsistence: 56.89
-                        vouchersAndCreditCards: 34.9
-                        nonCash: 23.89
+                    $ref: ./examples/employments/financialDetails/retrieve_user_response_NON_TYS.json
                 User provided financial details TY 23-24:
                   value:
-                    submittedOn: '2020-01-04T05:01:01.000Z'
-                    customerAdded: '2020-04-04T01:01:01.000Z'
-                    employment: &ref_35
-                      offPayrollWorker: true
-                      employer:
-                        employerRef: 223/AB12399
-                        employerName: Employer Name Ltd.
-                      pay:
-                        taxablePayToDate: 34234.15
-                        totalTaxToDate: 6782.92
-                      deductions:
-                        studentLoans:
-                          uglDeductionAmount: 13343.45
-                          pglDeductionAmount: 24242.56
-                      benefitsInKind:
-                        accommodation: 455.67
-                        assets: 435.54
-                        assetTransfer: 24.58
-                        beneficialLoan: 33.89
-                        car: 3434.78
-                        carFuel: 34.56
-                        educationalServices: 445.67
-                        entertaining: 434.45
-                        expenses: 3444.32
-                        medicalInsurance: 4542.47
-                        telephone: 243.43
-                        service: 45.67
-                        taxableExpenses: 24.56
-                        van: 56.29
-                        vanFuel: 14.56
-                        mileage: 34.23
-                        nonQualifyingRelocationExpenses: 54.62
-                        nurseryPlaces: 84.29
-                        otherItems: 67.67
-                        paymentsOnEmployeesBehalf: 67.23
-                        personalIncidentalExpenses: 74.29
-                        qualifyingRelocationExpenses: 78.24
-                        employerProvidedProfessionalSubscriptions: 84.56
-                        employerProvidedServices: 56.34
-                        incomeTaxPaidByDirector: 67.34
-                        travelAndSubsistence: 56.89
-                        vouchersAndCreditCards: 34.9
-                        nonCash: 23.89
+                    $ref: ./examples/employments/financialDetails/retrieve_user_response_TYS.json
                 User provided financial details TY 24-25 onwards:
                   value:
-                    submittedOn: '2020-01-04T05:01:01.000Z'
-                    customerAdded: '2020-04-04T01:01:01.000Z'
-                    employment: *ref_35
+                    $ref: ./examples/employments/financialDetails/retrieve_user_response_TYS.json
                 HMRC held financial details TY 22-23 and before:
                   value:
-                    submittedOn: '2020-01-04T05:01:01.000Z'
-                    dateIgnored: '2020-03-05T05:01:01.000Z'
-                    employment:
-                      employmentSequenceNumber: '1002'
-                      payrollId: '123456789999'
-                      companyDirector: false
-                      closeCompany: true
-                      directorshipCeasedDate: '2020-02-12'
-                      startDate: '2019-04-21'
-                      cessationDate: '2020-03-11'
-                      occupationalPension: false
-                      disguisedRemuneration: false
-                      employer:
-                        employerRef: 223/AB12399
-                        employerName: Employer Name Ltd.
-                      pay:
-                        taxablePayToDate: 34234.15
-                        totalTaxToDate: 6782.92
-                        payFrequency: monthly
-                        paymentDate: '2020-04-23'
-                        taxWeekNo: 32
-                        taxMonthNo: 8
-                      customerEstimatedPay:
-                        amount: 1500.99
-                      deductions:
-                        studentLoans:
-                          uglDeductionAmount: 13343.45
-                          pglDeductionAmount: 24242.56
-                      benefitsInKind:
-                        accommodation: 455.67
-                        assets: 435.54
-                        assetTransfer: 24.58
-                        beneficialLoan: 33.89
-                        car: 3434.78
-                        carFuel: 34.56
-                        educationalServices: 445.67
-                        entertaining: 434.45
-                        expenses: 3444.32
-                        medicalInsurance: 4542.47
-                        telephone: 243.43
-                        service: 45.67
-                        taxableExpenses: 24.56
-                        van: 56.29
-                        vanFuel: 14.56
-                        mileage: 34.23
-                        nonQualifyingRelocationExpenses: 54.62
-                        nurseryPlaces: 84.29
-                        otherItems: 67.67
-                        paymentsOnEmployeesBehalf: 67.23
-                        personalIncidentalExpenses: 74.29
-                        qualifyingRelocationExpenses: 78.24
-                        employerProvidedProfessionalSubscriptions: 84.56
-                        employerProvidedServices: 56.34
-                        incomeTaxPaidByDirector: 67.34
-                        travelAndSubsistence: 56.89
-                        vouchersAndCreditCards: 34.9
-                        nonCash: 23.89
+                    $ref: ./examples/employments/financialDetails/retrieve_hmrc_response_NON_TYS.json
                 HMRC held financial details TY 23-24:
                   value:
-                    submittedOn: '2020-01-04T05:01:01.000Z'
-                    dateIgnored: '2020-03-05T05:01:01.000Z'
-                    employment: &ref_36
-                      employmentSequenceNumber: '1002'
-                      payrollId: '123456789999'
-                      companyDirector: false
-                      closeCompany: true
-                      directorshipCeasedDate: '2020-02-12'
-                      startDate: '2019-04-21'
-                      cessationDate: '2020-03-11'
-                      occupationalPension: false
-                      disguisedRemuneration: false
-                      offPayrollWorker: true
-                      employer:
-                        employerRef: 223/AB12399
-                        employerName: Employer Name Ltd.
-                      pay:
-                        taxablePayToDate: 34234.15
-                        totalTaxToDate: 6782.92
-                        payFrequency: monthly
-                        paymentDate: '2020-04-23'
-                        taxWeekNo: 32
-                        taxMonthNo: 8
-                      customerEstimatedPay:
-                        amount: 1500.99
-                      deductions:
-                        studentLoans:
-                          uglDeductionAmount: 13343.45
-                          pglDeductionAmount: 24242.56
-                      benefitsInKind:
-                        accommodation: 455.67
-                        assets: 435.54
-                        assetTransfer: 24.58
-                        beneficialLoan: 33.89
-                        car: 3434.78
-                        carFuel: 34.56
-                        educationalServices: 445.67
-                        entertaining: 434.45
-                        expenses: 3444.32
-                        medicalInsurance: 4542.47
-                        telephone: 243.43
-                        service: 45.67
-                        taxableExpenses: 24.56
-                        van: 56.29
-                        vanFuel: 14.56
-                        mileage: 34.23
-                        nonQualifyingRelocationExpenses: 54.62
-                        nurseryPlaces: 84.29
-                        otherItems: 67.67
-                        paymentsOnEmployeesBehalf: 67.23
-                        personalIncidentalExpenses: 74.29
-                        qualifyingRelocationExpenses: 78.24
-                        employerProvidedProfessionalSubscriptions: 84.56
-                        employerProvidedServices: 56.34
-                        incomeTaxPaidByDirector: 67.34
-                        travelAndSubsistence: 56.89
-                        vouchersAndCreditCards: 34.9
-                        nonCash: 23.89
+                    $ref: ./examples/employments/financialDetails/retrieve_hmrc_response_TYS.json
                 HMRC held financial details TY 24-25 onwards:
                   value:
-                    submittedOn: '2020-01-04T05:01:01.000Z'
-                    dateIgnored: '2020-03-05T05:01:01.000Z'
-                    employment: *ref_36
+                    $ref: ./examples/employments/financialDetails/retrieve_hmrc_response_TYS.json
         '400':
           description: Bad request
           headers:
@@ -2761,7 +2523,7 @@ paths:
                   value: *ref_19
                 FORMAT_SOURCE:
                   description: The format of the supplied source is not valid.
-                  value: &ref_38
+                  value: &ref_36
                     code: FORMAT_SOURCE
                     message: The provided source is invalid
                 RULE_TAX_YEAR_RANGE_INVALID:
@@ -2844,10 +2606,10 @@ paths:
                   description: The request cannot be fulfilled. More specific information is provided in the error message.
                   value: *ref_13
     put:
-      summary: Create and Amend Employment Financial Details
       security:
         - User-Restricted:
             - write:self-assessment
+      summary: Create and Amend Employment Financial Details
       description: |
         This endpoint enables you to submit or overwrite financial data for an individual employment.
         A National Insurance number, tax year and Employment ID are required.
@@ -3011,83 +2773,10 @@ paths:
             examples:
               Example request for TY 2022-23 and before:
                 value:
-                  employment:
-                    pay:
-                      taxablePayToDate: 1024.99
-                      totalTaxToDate: 1024.99
-                    deductions:
-                      studentLoans:
-                        uglDeductionAmount: 1024.99
-                        pglDeductionAmount: 1024.99
-                    benefitsInKind:
-                      accommodation: 1024.99
-                      assets: 1024.99
-                      assetTransfer: 1024.99
-                      beneficialLoan: 1024.99
-                      car: 1024.99
-                      carFuel: 1024.99
-                      educationalServices: 1024.99
-                      entertaining: 1024.99
-                      expenses: 1024.99
-                      medicalInsurance: 1024.99
-                      telephone: 1024.99
-                      service: 1024.99
-                      taxableExpenses: 1024.99
-                      van: 1024.99
-                      vanFuel: 1024.99
-                      mileage: 1024.99
-                      nonQualifyingRelocationExpenses: 1024.99
-                      nurseryPlaces: 1024.99
-                      otherItems: 1024.99
-                      paymentsOnEmployeesBehalf: 1024.99
-                      personalIncidentalExpenses: 1024.99
-                      qualifyingRelocationExpenses: 1024.99
-                      employerProvidedProfessionalSubscriptions: 1024.99
-                      employerProvidedServices: 1024.99
-                      incomeTaxPaidByDirector: 1024.99
-                      travelAndSubsistence: 1024.99
-                      vouchersAndCreditCards: 1024.99
-                      nonCash: 1024.99
+                  $ref: ./examples/employments/financialDetails/amend_request_Non_TYS.json
               Example request for TY 2023-24 onwards:
                 value:
-                  employment:
-                    pay:
-                      taxablePayToDate: 1024.99
-                      totalTaxToDate: 1024.99
-                    deductions:
-                      studentLoans:
-                        uglDeductionAmount: 1024.99
-                        pglDeductionAmount: 1024.99
-                    benefitsInKind:
-                      accommodation: 1024.99
-                      assets: 1024.99
-                      assetTransfer: 1024.99
-                      beneficialLoan: 1024.99
-                      car: 1024.99
-                      carFuel: 1024.99
-                      educationalServices: 1024.99
-                      entertaining: 1024.99
-                      expenses: 1024.99
-                      medicalInsurance: 1024.99
-                      telephone: 1024.99
-                      service: 1024.99
-                      taxableExpenses: 1024.99
-                      van: 1024.99
-                      vanFuel: 1024.99
-                      mileage: 1024.99
-                      nonQualifyingRelocationExpenses: 1024.99
-                      nurseryPlaces: 1024.99
-                      otherItems: 1024.99
-                      paymentsOnEmployeesBehalf: 1024.99
-                      personalIncidentalExpenses: 1024.99
-                      qualifyingRelocationExpenses: 1024.99
-                      employerProvidedProfessionalSubscriptions: 1024.99
-                      employerProvidedServices: 1024.99
-                      incomeTaxPaidByDirector: 1024.99
-                      travelAndSubsistence: 1024.99
-                      vouchersAndCreditCards: 1024.99
-                      nonCash: 1024.99
-                    offPayrollWorker: true
+                  $ref: ./examples/employments/financialDetails/amend_request_TYS.json
       responses:
         '200':
           description: Success
@@ -3130,7 +2819,7 @@ paths:
                   value: *ref_19
                 FORMAT_VALUE:
                   description: One or more values have been added with the incorrect format.
-                  value: &ref_39
+                  value: &ref_37
                     code: FORMAT_VALUE
                     message: The value must be between 0.00 and 99999999999.99
                 RULE_TAX_YEAR_RANGE_INVALID:
@@ -3237,10 +2926,10 @@ paths:
                   description: The request cannot be fulfilled. More specific information is provided in the error message.
                   value: *ref_13
     delete:
-      summary: Delete Employment Financial Details
       security:
         - User-Restricted:
             - write:self-assessment
+      summary: Delete Employment Financial Details
       description: |
         This endpoint enables you to delete the previously entered financial data for an employment.
         <strong>This endpoint can only be used after the tax year has ended.</strong>
@@ -3421,10 +3110,10 @@ paths:
                   value: *ref_13
   /individuals/employments-income/non-paye/{nino}/{taxYear}:
     get:
-      summary: Retrieve Non-PAYE Employment Income
       security:
         - User-Restricted:
             - read:self-assessment
+      summary: Retrieve Non-PAYE Employment Income
       description: |
         This endpoint allows a developer to retrieve Non-PAYE employment income.
         A National Insurance number and tax year must be provided.
@@ -3462,7 +3151,7 @@ paths:
           description: |
             Specifies the source of data to be returned. If source is not provided,
             the latest submitted values will be returned.
-          schema: *ref_37
+          schema: *ref_35
           required: false
         - name: Accept
           in: header
@@ -3538,27 +3227,15 @@ paths:
                 user-example:
                   description: User Provided Response
                   value:
-                    submittedOn: '2020-07-06T09:37:17.542Z'
-                    source: user
-                    totalNonPayeIncome: 876.45
-                    nonPayeIncome:
-                      tips: 876.45
+                    $ref: ./examples/nonPayeEmployments/retrieve_user_response.json
                 hmrc-example:
                   description: HMRC held Response
                   value:
-                    submittedOn: '2020-07-06T09:37:17.542Z'
-                    source: hmrc-held
-                    totalNonPayeIncome: 876.45
-                    nonPayeIncome:
-                      tips: 876.45
+                    $ref: ./examples/nonPayeEmployments/retrieve_hmrc_response.json
                 latest-example:
                   description: Latest Response
                   value:
-                    submittedOn: '2020-07-06T09:37:17.542Z'
-                    source: latest
-                    totalNonPayeIncome: 876.45
-                    nonPayeIncome:
-                      tips: 876.45
+                    $ref: ./examples/nonPayeEmployments/retrieve_latest_response.json
         '400':
           description: Bad request
           headers:
@@ -3586,7 +3263,7 @@ paths:
                   value: *ref_8
                 FORMAT_SOURCE:
                   description: The format of the supplied source is not valid.
-                  value: *ref_38
+                  value: *ref_36
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -3667,10 +3344,10 @@ paths:
                   description: The request cannot be fulfilled. More specific information is provided in the error message.
                   value: *ref_13
     put:
-      summary: Create and Amend Non-PAYE Employment Income
       security:
         - User-Restricted:
             - write:self-assessment
+      summary: Create and Amend Non-PAYE Employment Income
       description: |
         This endpoint allows a developer to create and amend Non-PAYE employment income. 
         A National Insurance number and tax year must be provided.
@@ -3747,7 +3424,7 @@ paths:
               example-1:
                 description: Default Example
                 value:
-                  tips: 99.99
+                  $ref: ./examples/nonPayeEmployments/create_amend_request.json
       responses:
         '204':
           description: Success(No Content)
@@ -3787,7 +3464,7 @@ paths:
                   value: *ref_8
                 FORMAT_VALUE:
                   description: One or more values have been added with the incorrect format.
-                  value: *ref_39
+                  value: *ref_37
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -3877,10 +3554,10 @@ paths:
                   description: The request cannot be fulfilled. More specific information is provided in the error message.
                   value: *ref_13
     delete:
-      summary: Delete Non-PAYE Employment Income
       security:
         - User-Restricted:
             - write:self-assessment
+      summary: Delete Non-PAYE Employment Income
       description: |
         This endpoint allows a developer to delete Non-PAYE employment income.
         A National Insurance number and tax year must be provided.
@@ -4051,10 +3728,10 @@ paths:
                   value: *ref_13
   /individuals/employments-income/other/{nino}/{taxYear}:
     get:
-      summary: Retrieve Other Employment Income
       security:
         - User-Restricted:
             - read:self-assessment
+      summary: Retrieve Other Employment Income
       description: |
         This endpoint enables you to retrieve other employment income:
         share options, shares awarded or received, disability, lump sums and foreign service income.
@@ -4130,7 +3807,7 @@ paths:
                     example: '2021-04-06T09:37:17.542Z'
                   shareOption:
                     type: array
-                    items: &ref_40
+                    items: &ref_38
                       type: object
                       description: Financial details about share options income.
                       properties:
@@ -4239,7 +3916,7 @@ paths:
                         - taxableAmount
                   sharesAwardedOrReceived:
                     type: array
-                    items: &ref_41
+                    items: &ref_39
                       type: object
                       description: Financial details about shares awarded or received income
                       properties:
@@ -4338,7 +4015,7 @@ paths:
                   disability:
                     type: object
                     description: An object that holds the key value for disability deductions.
-                    properties: &ref_42
+                    properties: &ref_40
                       customerReference:
                         type: string
                         description: An optional user supplied reference.
@@ -4351,12 +4028,12 @@ paths:
                         multipleOf: 0.01
                         minimum: 0
                         'maximum:': 99999999999.99
-                    required: &ref_43
+                    required: &ref_41
                       - amountDeducted
                   foreignService:
                     type: object
                     description: An object that holds the key value for foreign service deductions.
-                    properties: &ref_44
+                    properties: &ref_42
                       customerReference:
                         type: string
                         description: A reference the user supplies to identify the foreign income.
@@ -4369,11 +4046,11 @@ paths:
                         multipleOf: 0.01
                         minimum: 0
                         'maximum:': 99999999999.99
-                    required: &ref_45
+                    required: &ref_43
                       - amountDeducted
                   lumpSums:
                     type: array
-                    items: &ref_46
+                    items: &ref_44
                       type: object
                       description: An array that holds details of lump sum income
                       properties:
@@ -4488,62 +4165,7 @@ paths:
                 example-1:
                   description: Default Example
                   value:
-                    submittedOn: '2021-04-06T09:37:17.000Z'
-                    shareOption:
-                      - employerName: Company Ltd
-                        employerRef: 123/AB456
-                        schemePlanType: emi
-                        dateOfOptionGrant: '2019-11-20'
-                        dateOfEvent: '2019-11-20'
-                        optionNotExercisedButConsiderationReceived: true
-                        amountOfConsiderationReceived: 23122.22
-                        noOfSharesAcquired: 1
-                        classOfSharesAcquired: FIRST
-                        exercisePrice: 12.22
-                        amountPaidForOption: 123.22
-                        marketValueOfSharesOnExcise: 1232.22
-                        profitOnOptionExercised: 1232.33
-                        employersNicPaid: 2312.22
-                        taxableAmount: 2132.22
-                    sharesAwardedOrReceived:
-                      - employerName: Company Ltd
-                        employerRef: 123/AB456
-                        schemePlanType: sip
-                        dateSharesCeasedToBeSubjectToPlan: '2019-11-10'
-                        noOfShareSecuritiesAwarded: 11
-                        classOfShareAwarded: FIRST
-                        dateSharesAwarded: '2019-11-20'
-                        sharesSubjectToRestrictions: true
-                        electionEnteredIgnoreRestrictions: false
-                        actualMarketValueOfSharesOnAward: 2123.22
-                        unrestrictedMarketValueOfSharesOnAward: 123.22
-                        amountPaidForSharesOnAward: 123.22
-                        marketValueAfterRestrictionsLifted: 1232.22
-                        taxableAmount: 12321.22
-                    disability:
-                      customerReference: EMP123A
-                      amountDeducted: 1223.22
-                    foreignService:
-                      customerReference: EMP123A
-                      amountDeducted: 1223.22
-                    lumpSums:
-                      - employerName: Company Ltd
-                        employerRef: 123/AB456
-                        taxableLumpSumsAndCertainIncome:
-                          amount: 5000.99
-                          taxPaid: 5000.99
-                          taxTakenOffInEmployment: false
-                        benefitFromEmployerFinancedRetirementScheme:
-                          amount: 5000.99
-                          exemptAmount: 5000.99
-                          taxPaid: 500.99
-                          taxTakenOffInEmployment: false
-                        redundancyCompensationPaymentsOverExemption:
-                          amount: 4000.99
-                          taxPaid: 400.99
-                          taxTakenOffInEmployment: false
-                        redundancyCompensationPaymentsUnderExemption:
-                          amount: 5000.99
+                    $ref: ./examples/otherEmploymentIncome/retrieve_response.json
         '400':
           description: Bad request
           headers:
@@ -4649,10 +4271,10 @@ paths:
                   description: The request cannot be fulfilled. More specific information is provided in the error message.
                   value: *ref_13
     put:
-      summary: Create and Amend Other Employment Income
       security:
         - User-Restricted:
             - write:self-assessment
+      summary: Create and Amend Other Employment Income
       description: |
         This endpoint allows a developer to create and amend other employment income:
         share options, shares awarded or received, disability, lump sums and foreign service income.
@@ -4719,82 +4341,28 @@ paths:
               properties:
                 shareOption:
                   type: array
-                  items: *ref_40
+                  items: *ref_38
                 sharesAwardedOrReceived:
                   type: array
-                  items: *ref_41
+                  items: *ref_39
                 disability:
                   type: object
                   description: An object that holds the key value for disability deductions.
-                  properties: *ref_42
-                  required: *ref_43
+                  properties: *ref_40
+                  required: *ref_41
                 foreignService:
                   type: object
                   description: An object that holds the key value for foreign service deductions.
-                  properties: *ref_44
-                  required: *ref_45
+                  properties: *ref_42
+                  required: *ref_43
                 lumpSums:
                   type: array
-                  items: *ref_46
+                  items: *ref_44
             examples:
               example-1:
                 description: Default Example
                 value:
-                  shareOption:
-                    - employerName: Company Ltd
-                      employerRef: 123/AB456
-                      schemePlanType: emi
-                      dateOfOptionGrant: '2019-11-20'
-                      dateOfEvent: '2019-11-20'
-                      optionNotExercisedButConsiderationReceived: true
-                      amountOfConsiderationReceived: 23122.22
-                      noOfSharesAcquired: 1
-                      classOfSharesAcquired: FIRST
-                      exercisePrice: 12.22
-                      amountPaidForOption: 123.22
-                      marketValueOfSharesOnExcise: 1232.22
-                      profitOnOptionExercised: 1232.33
-                      employersNicPaid: 2312.22
-                      taxableAmount: 2132.22
-                  sharesAwardedOrReceived:
-                    - employerName: Company Ltd
-                      employerRef: 123/AB456
-                      schemePlanType: sip
-                      dateSharesCeasedToBeSubjectToPlan: '2019-11-10'
-                      noOfShareSecuritiesAwarded: 11
-                      classOfShareAwarded: FIRST
-                      dateSharesAwarded: '2019-11-20'
-                      sharesSubjectToRestrictions: true
-                      electionEnteredIgnoreRestrictions: false
-                      actualMarketValueOfSharesOnAward: 2123.22
-                      unrestrictedMarketValueOfSharesOnAward: 123.22
-                      amountPaidForSharesOnAward: 123.22
-                      marketValueAfterRestrictionsLifted: 1232.22
-                      taxableAmount: 12321.22
-                  disability:
-                    customerReference: EMP123A
-                    amountDeducted: 1223.22
-                  foreignService:
-                    customerReference: EMP123A
-                    amountDeducted: 1223.22
-                  lumpSums:
-                    - employerName: Company Ltd
-                      employerRef: 123/AB456
-                      taxableLumpSumsAndCertainIncome:
-                        amount: 5000.99
-                        taxPaid: 5000.99
-                        taxTakenOffInEmployment: false
-                      benefitFromEmployerFinancedRetirementScheme:
-                        amount: 5000.99
-                        exemptAmount: 5000.99
-                        taxPaid: 500.99
-                        taxTakenOffInEmployment: false
-                      redundancyCompensationPaymentsOverExemption:
-                        amount: 4000.99
-                        taxPaid: 400.99
-                        taxTakenOffInEmployment: false
-                      redundancyCompensationPaymentsUnderExemption:
-                        amount: 5000.99
+                  $ref: ./examples/otherEmploymentIncome/amend_request.json
       responses:
         '200':
           description: Success
@@ -4834,7 +4402,7 @@ paths:
                   value: *ref_8
                 FORMAT_VALUE:
                   description: One or more values have been added with the incorrect format.
-                  value: *ref_39
+                  value: *ref_37
                 FORMAT_CUSTOMER_REF:
                   description: The format of the supplied customer reference is not valid.
                   value:
@@ -4940,10 +4508,10 @@ paths:
                   description: The request cannot be fulfilled. More specific information is provided in the error message.
                   value: *ref_13
     delete:
-      summary: Delete Other Employment Income
       security:
         - User-Restricted:
             - write:self-assessment
+      summary: Delete Other Employment Income
       description: |
         This endpoint enables you to delete other employment income:
         share options, shares awarded or received, disability, lump sums and foreign service income.
@@ -5115,10 +4683,10 @@ paths:
                   value: *ref_13
   /individuals/employments-income/{nino}/{taxYear}/{employmentId}/benefit-in-kind/student-loans:
     get:
-      summary: Retrieve Student Loan Benefits in Kind
       security:
         - User-Restricted:
             - read:self-assessment
+      summary: Retrieve Student Loan Benefits in Kind
       description: |
         This endpoint allows you to retrieve information on Student Loan Benefits in Kind (BIK).
 
@@ -5144,7 +4712,7 @@ paths:
           description: |
             The tax year the data applies to. 
             The start year and end year must not span two tax years. The minimum tax year is 2025-26. No gaps are allowed, for example, 2025-27 is not valid.
-          schema: &ref_47
+          schema: &ref_45
             type: string
             example: 2025-26
           required: true
@@ -5294,10 +4862,10 @@ paths:
                   description: The supplied income source could not be found.
                   value: *ref_15
     put:
-      summary: Create or Amend Student Loan Benefits in Kind
       security:
         - User-Restricted:
             - write:self-assessment
+      summary: Create or Amend Student Loan Benefits in Kind
       description: |
         This endpoint provides the ability to submit information on payrolled benefits which affect student loan repayments.
 
@@ -5323,7 +4891,7 @@ paths:
           description: |
             The tax year the data applies to. 
             The start year and end year must not span two tax years. The minimum tax year is 2025-26. No gaps are allowed, for example, 2025-27 is not valid.
-          schema: *ref_47
+          schema: *ref_45
           required: true
         - name: employmentId
           in: path
@@ -5377,7 +4945,7 @@ paths:
               example-1:
                 description: Default Example
                 value:
-                  payrolledBenefits: 20000.01
+                  $ref: ./examples/studentLoanBenefitInKind/create_amend_request.json
       responses:
         '204':
           description: No Content
@@ -5428,7 +4996,7 @@ paths:
                   description: |
                     The specified tax year is not supported. 
                     The tax year specified is before the minimum tax year value.
-                  value: &ref_48
+                  value: &ref_46
                     code: RULE_TAX_YEAR_NOT_SUPPORTED
                     message: The tax year specified does not lie within the supported range
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
@@ -5462,10 +5030,10 @@ paths:
                     the agent is not subscribed to Agent Services, or the client has not authorised the agent to act on their behalf.
                   value: *ref_12
     delete:
-      summary: Delete Student Loan Benefits in Kind
       security:
         - User-Restricted:
             - write:self-assessment
+      summary: Delete Student Loan Benefits in Kind
       description: |
         This endpoint enables you to remove Student Loan Benefits in Kind (BIK) data
 
@@ -5492,7 +5060,7 @@ paths:
           description: |
             The tax year the data applies to. 
             The start year and end year must not span two tax years. The minimum tax year is 2025-26. No gaps are allowed, for example, 2025-27 is not valid.
-          schema: *ref_47
+          schema: *ref_45
           required: true
         - name: employmentId
           in: path
@@ -5565,7 +5133,7 @@ paths:
                   description: |
                     The specified tax year is not supported. 
                     The tax year specified is before the minimum tax year value.
-                  value: *ref_48
+                  value: *ref_46
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
                   value: *ref_30
