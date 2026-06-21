@@ -1873,14 +1873,14 @@ paths:
                                 description: The gross pay for this employment. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               totalTaxToDate:
                                 type: number
                                 description: The amount of tax deducted for this employment. The value must be between -99999999999.99 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: -99999999999.99
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               payFrequency:
                                 type: string
@@ -1938,14 +1938,14 @@ paths:
                                     description: The amount deducted for an undergraduate student loan. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                     example: 1024.99
                                     minimum: 0
-                                    'maximum:': 99999999999.99
+                                    maximum: 99999999999.99
                                     multipleOf: 0.01
                                   pglDeductionAmount:
                                     type: number
                                     description: The amount deducted for a postgraduate student loan. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                     example: 1024.99
                                     minimum: 0
-                                    'maximum:': 99999999999.99
+                                    maximum: 99999999999.99
                                     multipleOf: 0.01
                           benefitsInKind:
                             type: object
@@ -1956,196 +1956,196 @@ paths:
                                 description: The value of accommodation costs provided by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               assets:
                                 type: number
                                 description: The value of any goods provided by the employer not exclusively used for work. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               assetTransfer:
                                 type: number
                                 description: The value of any company assets signed over by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               beneficialLoan:
                                 type: number
                                 description: The amount of interest free or low interest loans given by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               car:
                                 type: number
                                 description: The cash equivalent of any cars made available by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               carFuel:
                                 type: number
                                 description: The amount paid for fuel when using company cars. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               educationalServices:
                                 type: number
                                 description: Scholarships or school fees paid by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               entertaining:
                                 type: number
                                 description: Entertainment costs paid by the employer either directly or reimbursed to the employee. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               expenses:
                                 type: number
                                 description: Expenses reimbursed by the employer to the employee. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               medicalInsurance:
                                 type: number
                                 description: The sum of insurance premiums paid by the employer for medical or dental insurance. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               telephone:
                                 type: number
                                 description: Telephone costs paid by the employer that are not exempt. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               service:
                                 type: number
                                 description: Services used by an employee and paid for by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               taxableExpenses:
                                 type: number
                                 description: Taxable expenses reimbursed by the employer to the employee. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               van:
                                 type: number
                                 description: The cash equivalent of any vans made available by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               vanFuel:
                                 type: number
                                 description: The amount paid by the employer for fuel costs when using company vans. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               mileage:
                                 type: number
                                 description: The mileage amount paid over HMRC's approved rate by the employer for use of employee's own car for work. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               nonQualifyingRelocationExpenses:
                                 type: number
                                 description: Other costs involved in relocation paid for directly by the employer or reimbursed to the employee. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               nurseryPlaces:
                                 type: number
                                 description: Childcare costs paid by the employer or voucher or commercial childcare costs above the exempt limit. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               otherItems:
                                 type: number
                                 description: The value of any other benefits. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               paymentsOnEmployeesBehalf:
                                 type: number
                                 description: Other costs incurred by the employee paid for by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               personalIncidentalExpenses:
                                 type: number
                                 description: Incidental (non-business) expenses incurred by an employee while travelling on business. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               qualifyingRelocationExpenses:
                                 type: number
                                 description: Employer paid costs associated with employee relocation including bridging loans. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               employerProvidedProfessionalSubscriptions:
                                 type: number
                                 description: Professional fees and subscriptions paid for by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               employerProvidedServices:
                                 type: number
                                 description: The value of services provided by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               incomeTaxPaidByDirector:
                                 type: number
                                 description: Non PAYE Income Tax for directors deducted from the employer by HMRC. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               travelAndSubsistence:
                                 type: number
                                 description: The cost of any travel and subsistence (accommodation, meals and so on) paid for by the employer, that is not exempt. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               vouchersAndCreditCards:
                                 type: number
                                 description: The value of vouchers given by the employer and the expenditure of any employer provided credit cards. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               nonCash:
                                 type: number
                                 description: The value of any other non-cash benefits paid to the employee. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                         required:
                           - employer
@@ -2247,14 +2247,14 @@ paths:
                                 description: The gross pay for this employment. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               totalTaxToDate:
                                 type: number
                                 description: The amount of tax deducted for this employment. The value must be between -99999999999.99 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: -99999999999.99
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               payFrequency:
                                 type: string
@@ -2408,14 +2408,14 @@ paths:
                                 description: The gross pay for this employment. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: 0
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               totalTaxToDate:
                                 type: number
                                 description: The amount of tax deducted for this employment. The value must be between -99999999999.99 and 99999999999.99 up to 2 decimal places.
                                 example: 1024.99
                                 minimum: -99999999999.99
-                                'maximum:': 99999999999.99
+                                maximum: 99999999999.99
                                 multipleOf: 0.01
                               payFrequency:
                                 type: string
@@ -2696,14 +2696,14 @@ paths:
                               description: The gross pay for this employment. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                               example: 1024.99
                               minimum: 0
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                               multipleOf: 0.01
                             totalTaxToDate:
                               type: number
                               description: The amount of tax deducted for this employment. The value must be between -99999999999.99 and 99999999999.99 up to 2 decimal places.
                               example: 1024.99
                               minimum: -99999999999.99
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                               multipleOf: 0.01
                           required:
                             - taxablePayToDate
@@ -2738,14 +2738,14 @@ paths:
                               description: The gross pay for this employment. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                               example: 1024.99
                               minimum: 0
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                               multipleOf: 0.01
                             totalTaxToDate:
                               type: number
                               description: The amount of tax deducted for this employment. The value must be between -99999999999.99 and 99999999999.99 up to 2 decimal places.
                               example: 1024.99
                               minimum: -99999999999.99
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                               multipleOf: 0.01
                           required:
                             - taxablePayToDate
@@ -3207,7 +3207,7 @@ paths:
                     example: 5000.99
                     multipleOf: 0.01
                     minimum: 0
-                    'maximum:': 99999999999.99
+                    maximum: 99999999999.99
                   nonPayeIncome:
                     type: object
                     description: Details of non PAYE income.
@@ -3218,7 +3218,7 @@ paths:
                         example: 5000.99
                         multipleOf: 0.01
                         minimum: 0
-                        'maximum:': 99999999999.99
+                        maximum: 99999999999.99
                 required:
                   - submittedOn
                   - source
@@ -3842,7 +3842,7 @@ paths:
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                         noOfSharesAcquired:
                           type: number
                           description: The number of shares acquired. The value must be 0 or more.
@@ -3860,42 +3860,42 @@ paths:
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                         amountPaidForOption:
                           type: number
                           description: The amount that an investor paid for an option contract. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                         marketValueOfSharesOnExcise:
                           type: number
                           description: The price that a stock can be readily bought or sold in the current market place. The 'going price' of a share of stock. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                         profitOnOptionExercised:
                           type: number
                           description: The sum that an investor earns by buying a call option or selling a put option at maturity. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                         employersNicPaid:
                           type: number
                           description: The amount of National Insurance contributions the employers paid on an option. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                         taxableAmount:
                           type: number
                           description: The taxable amount not subject to PAYE. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                       required:
                         - employerName
                         - schemePlanType
@@ -3964,35 +3964,35 @@ paths:
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                         unrestrictedMarketValueOfSharesOnAward:
                           type: number
                           description: The unrestricted market value of the shares awarded. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                         amountPaidForSharesOnAward:
                           type: number
                           description: The amount paid for the shares awarded. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                         marketValueAfterRestrictionsLifted:
                           type: number
                           description: The market value of the shares after restrictions lifted. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                         taxableAmount:
                           type: number
                           description: The taxable amount not subject to PAYE. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                           example: 5000.99
                           multipleOf: 0.01
                           minimum: 0
-                          'maximum:': 99999999999.99
+                          maximum: 99999999999.99
                       required:
                         - employerName
                         - schemePlanType
@@ -4022,7 +4022,7 @@ paths:
                         example: 5000.99
                         multipleOf: 0.01
                         minimum: 0
-                        'maximum:': 99999999999.99
+                        maximum: 99999999999.99
                     required: &ref_41
                       - amountDeducted
                   foreignService:
@@ -4040,7 +4040,7 @@ paths:
                         example: 5000.99
                         multipleOf: 0.01
                         minimum: 0
-                        'maximum:': 99999999999.99
+                        maximum: 99999999999.99
                     required: &ref_43
                       - amountDeducted
                   lumpSums:
@@ -4069,14 +4069,14 @@ paths:
                               example: 5000.99
                               multipleOf: 0.01
                               minimum: 0
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                             taxPaid:
                               type: number
                               description: The amount of tax paid on the lump sum. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                               example: 5000.99
                               multipleOf: 0.01
                               minimum: 0
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                             taxTakenOffInEmployment:
                               type: boolean
                               description: A boolean indicating whether tax has been taken off in employment.
@@ -4093,21 +4093,21 @@ paths:
                               example: 5000.99
                               multipleOf: 0.01
                               minimum: 0
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                             exemptAmount:
                               type: number
                               description: The amount of benefit exempt from tax. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                               example: 5000.99
                               multipleOf: 0.01
                               minimum: 0
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                             taxPaid:
                               type: number
                               description: The amount of tax paid on the benefit. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                               example: 5000.99
                               multipleOf: 0.01
                               minimum: 0
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                             taxTakenOffInEmployment:
                               type: boolean
                               description: A boolean indicating whether tax has been taken off in employment.
@@ -4124,14 +4124,14 @@ paths:
                               example: 5000.99
                               multipleOf: 0.01
                               minimum: 0
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                             taxPaid:
                               type: number
                               description: The amount of tax paid on the redundancy compensation payments. The value must be between 0 and 99999999999.99 up to 2 decimal places.
                               example: 5000.99
                               multipleOf: 0.01
                               minimum: 0
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                             taxTakenOffInEmployment:
                               type: boolean
                               description: A boolean indicating whether tax has been taken off in employment.
@@ -4148,7 +4148,7 @@ paths:
                               example: 5000.99
                               multipleOf: 0.01
                               minimum: 0
-                              'maximum:': 99999999999.99
+                              maximum: 99999999999.99
                           required:
                             - amount
                       required:
