@@ -2613,6 +2613,7 @@ paths:
       description: |
         This endpoint enables you to submit or overwrite financial data for an individual employment.
         A National Insurance number, tax year and Employment ID are required.
+        **This endpoint can only be used after the tax year has ended.**
 
         ### Test data
         Scenario simulation using Gov-Test-Scenario headers is only available in the sandbox environment.
@@ -3346,7 +3347,7 @@ paths:
       description: |
         This endpoint allows a developer to create and amend Non-PAYE employment income. 
         A National Insurance number and tax year must be provided.
-        This endpoint can only be used after the tax year has ended.
+        **This endpoint can only be used after the tax year has ended.**
 
         ### Test data
         Scenario simulation using Gov-Test-Scenario headers is only available in the sandbox environment.
