@@ -38,12 +38,10 @@ requestBody:
       examples:
         default-example:
           description: Default Example
-          value:
-            $ref: './examples/employments/add_request.json'
+          externalValue: './examples/employments/add_request.json'
         occupational-pension-example:
           description: Example With Occupational Pension
-          value:
-            $ref: './examples/employments/add_request_pension_true.json'
+          externalValue: './examples/employments/add_request_pension_true.json'
 
 responses:
   "200":
@@ -58,8 +56,7 @@ responses:
         examples:
           example-response:
             description: Example Response
-            value:
-              $ref: './examples/employments/add_response.json'
+            externalValue: './examples/employments/add_response.json'
 
   "400":
     description: Bad request
