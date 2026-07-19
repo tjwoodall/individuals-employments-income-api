@@ -42,12 +42,10 @@ requestBody:
       examples:
         default-example:
           description: Default Example
-          value:
-            $ref: './examples/employments/amend_request.json'
+          externalValue: './examples/employments/amend_request.json'
         occupational-pension-example:
           description: Example With Occupational Pension
-          value:
-            $ref: './examples/employments/amend_request_pension_true.json'
+          externalValue: './examples/employments/amend_request_pension_true.json'
 
 responses:
   "200":
