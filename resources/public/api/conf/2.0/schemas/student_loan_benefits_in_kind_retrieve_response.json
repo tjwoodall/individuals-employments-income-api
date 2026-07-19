@@ -7,7 +7,7 @@
     "submittedOn": {
       "type": "string",
       "description": "The date and time of the submission. Must conform to the format YYYY-MM-DDThh:mm:ss.SSSZ",
-      "example": "2025-08-24T14:15:220Z"
+      "example": "2025-08-24T14:15:22.000Z"
     },
     "payrolledBenefits": {
       "type": "number",
