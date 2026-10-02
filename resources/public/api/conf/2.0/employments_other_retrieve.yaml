@@ -42,8 +42,7 @@ responses:
         examples:
           example-1:
             description: Default Example
-            value:
-              $ref: './examples/otherEmploymentIncome/retrieve_response.json'
+            externalValue: './examples/otherEmploymentIncome/retrieve_response.json'
 
   "400":
     description: Bad request
