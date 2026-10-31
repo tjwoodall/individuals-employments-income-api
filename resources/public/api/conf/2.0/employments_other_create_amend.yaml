@@ -38,8 +38,7 @@ requestBody:
       examples:
         example-1:
           description: Default Example
-          value:
-            $ref: './examples/otherEmploymentIncome/amend_request.json'
+          externalValue: './examples/otherEmploymentIncome/amend_request.json'
 
 responses:
   "200":
