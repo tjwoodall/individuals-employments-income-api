@@ -92,7 +92,6 @@ paths:
         | N/A - DEFAULT                    | Simulates success response.                                       |
         | CUSTOM_EMPLOYMENT                | Simulates the scenario where a custom employment is submitted.    |
         | NOT_FOUND                        | Simulates the scenario where no data is found.                    |
-        | TAX_YEAR_NOT_ENDED               | Simulates the scenario where the tax year provided has not ended. |
         | REQUEST_CANNOT_BE_FULFILLED      | Simulates the scenario where the request cannot be fulfilled for various reasons other than the ones triggering other errors.|
         | OUTSIDE_AMENDMENT_WINDOW         | Simulates the scenario where request cannot be completed as it is outside the amendment window.|
       parameters:
@@ -147,6 +146,18 @@ paths:
         required: false
         schema:
           type: string
+      - name: suspend-temporal-validations
+        in: header
+        description: "Only in the sandbox environment. When supplied and set to `true`,\
+          \ this header relaxes tax year validation rule to \nallow in-year submissions\
+          \ for endpoints configured for end-of-year submissions. Not supplying the\
+          \ header or setting \nit to `false` results in a `RULE_TAX_YEAR_NOT_ENDED`\
+          \ error for in-year submissions. In Production, the header is\nignored and\
+          \ normal validations apply.\n"
+        required: false
+        schema:
+          type: boolean
+          example: true
       responses:
         "200":
           description: Success
@@ -348,23 +359,21 @@ paths:
       tags:
       - Employments
       summary: Unignore Employment
-      description: "This endpoint enables you to unignore the HMRC provided employment\
-        \ from a list of employments for this user.\n<strong>This endpoint can only\
-        \ be used after the tax year has ended.</strong>\nA National Insurance number,\
-        \ tax year and Employment ID must be provided.\n\n### Test data\nScenario\
-        \ simulation using Gov-Test-Scenario headers is only available in the sandbox\
-        \ environment.\n\n| Header Value (Gov-Test-Scenario) | Scenario          \
-        \                                                |\n|----------------------------------|-------------------------------------------------------------------|\n\
-        | N/A - DEFAULT                    | Simulates success response.         \
-        \                              |\n| CUSTOM_EMPLOYMENT                | Simulates\
-        \ the scenario where a custom employment is submitted.    |\n| NOT_FOUND \
-        \                       | Simulates the scenario where no data is found. \
-        \                   |\n| TAX_YEAR_NOT_ENDED               | Simulates the\
-        \ scenario where the tax year provided has not ended. | \n| REQUEST_CANNOT_BE_FULFILLED\
-        \      | Simulates the scenario where the request cannot be fulfilled for\
-        \ various reasons other than the ones triggering other errors.|\n| OUTSIDE_AMENDMENT_WINDOW\
-        \         | Simulates the scenario where request cannot be completed as it\
-        \ is outside the amendment window. |\n"
+      description: |
+        This endpoint enables you to unignore the HMRC provided employment from a list of employments for this user.
+        <strong>This endpoint can only be used after the tax year has ended.</strong>
+        A National Insurance number, tax year and Employment ID must be provided.
+
+        ### Test data
+        Scenario simulation using Gov-Test-Scenario headers is only available in the sandbox environment.
+
+        | Header Value (Gov-Test-Scenario) | Scenario                                                          |
+        |----------------------------------|-------------------------------------------------------------------|
+        | N/A - DEFAULT                    | Simulates success response.                                       |
+        | CUSTOM_EMPLOYMENT                | Simulates the scenario where a custom employment is submitted.    |
+        | NOT_FOUND                        | Simulates the scenario where no data is found.                    |
+        | REQUEST_CANNOT_BE_FULFILLED      | Simulates the scenario where the request cannot be fulfilled for various reasons other than the ones triggering other errors.|
+        | OUTSIDE_AMENDMENT_WINDOW         | Simulates the scenario where request cannot be completed as it is outside the amendment window. |
       parameters:
       - name: nino
         in: path
@@ -417,6 +426,18 @@ paths:
         required: false
         schema:
           type: string
+      - name: suspend-temporal-validations
+        in: header
+        description: "Only in the sandbox environment. When supplied and set to `true`,\
+          \ this header relaxes tax year validation rule to \nallow in-year submissions\
+          \ for endpoints configured for end-of-year submissions. Not supplying the\
+          \ header or setting \nit to `false` results in a `RULE_TAX_YEAR_NOT_ENDED`\
+          \ error for in-year submissions. In Production, the header is\nignored and\
+          \ normal validations apply.\n"
+        required: false
+        schema:
+          type: boolean
+          example: true
       responses:
         "200":
           description: Success
@@ -737,6 +758,19 @@ components:
       required: false
       schema:
         type: string
+    suspendTemporalValidationsHeader:
+      name: suspend-temporal-validations
+      in: header
+      description: "Only in the sandbox environment. When supplied and set to `true`,\
+        \ this header relaxes tax year validation rule to \nallow in-year submissions\
+        \ for endpoints configured for end-of-year submissions. Not supplying the\
+        \ header or setting \nit to `false` results in a `RULE_TAX_YEAR_NOT_ENDED`\
+        \ error for in-year submissions. In Production, the header is\nignored and\
+        \ normal validations apply.\n"
+      required: false
+      schema:
+        type: boolean
+        example: true
   examples:
     formatNino:
       description: The format of the supplied NINO field is not valid.
