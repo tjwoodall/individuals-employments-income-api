@@ -386,6 +386,17 @@ paths:
             Only in sandbox environment. See Test Data table for all header values.
           schema: *ref_6
           required: false
+        - name: suspend-temporal-validations
+          in: header
+          description: |
+            Only in the sandbox environment. When supplied and set to `true`, this header relaxes tax year validation rule to 
+            allow in-year submissions for endpoints configured for end-of-year submissions. Not supplying the header or setting 
+            it to `false` results in a `RULE_TAX_YEAR_NOT_ENDED` error for in-year submissions. In Production, the header is
+            ignored and normal validations apply.
+          schema: &ref_19
+            type: boolean
+            example: true
+          required: false
       requestBody:
         content:
           application/json:
@@ -494,27 +505,27 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYER_REF:
                   description: The format of the supplied employer ref is not valid.
-                  value: &ref_20
+                  value: &ref_21
                     code: FORMAT_EMPLOYER_REF
                     message: The provided employer ref is invalid
                 FORMAT_EMPLOYER_NAME:
                   description: The format of the employer name is not valid.
-                  value: &ref_21
+                  value: &ref_22
                     code: FORMAT_EMPLOYER_NAME
                     message: The provided employer name is invalid
                 FORMAT_START_DATE:
                   description: The format of the supplied start date field is not valid.
-                  value: &ref_22
+                  value: &ref_23
                     code: FORMAT_START_DATE
                     message: The provided start date is invalid
                 FORMAT_CESSATION_DATE:
                   description: The format of the supplied cessation date is not valid.
-                  value: &ref_23
+                  value: &ref_24
                     code: FORMAT_CESSATION_DATE
                     message: The provided cessation date is invalid
                 FORMAT_PAYROLL_ID:
                   description: The format of the supplied payroll ID field is not valid.
-                  value: &ref_24
+                  value: &ref_25
                     code: FORMAT_PAYROLL_ID
                     message: The provided payroll ID is invalid
                 RULE_TAX_YEAR_RANGE_INVALID:
@@ -527,32 +538,32 @@ paths:
                   value: *ref_10
                 RULE_TAX_YEAR_NOT_ENDED:
                   description: The submission has been made before the tax year it relates to has ended.
-                  value: &ref_25
+                  value: &ref_26
                     code: RULE_TAX_YEAR_NOT_ENDED
                     message: Tax year not ended
                 RULE_START_DATE_AFTER_TAX_YEAR_END:
                   description: The employment is listed as starting after the tax year ended.
-                  value: &ref_26
+                  value: &ref_27
                     code: RULE_START_DATE_AFTER_TAX_YEAR_END
                     message: The start date cannot be later than the tax year end
                 RULE_CESSATION_DATE_BEFORE_TAX_YEAR_START:
                   description: The employment is listed as ending before the tax year began.
-                  value: &ref_27
+                  value: &ref_28
                     code: RULE_CESSATION_DATE_BEFORE_TAX_YEAR_START
                     message: The cessation date cannot be before the tax year starts
                 RULE_CESSATION_DATE_BEFORE_START_DATE:
                   description: The cessation date is earlier than the start date.
-                  value: &ref_28
+                  value: &ref_29
                     code: RULE_CESSATION_DATE_BEFORE_START_DATE
                     message: The cessation date cannot be earlier than the start date
                 RULE_INCORRECT_OR_EMPTY_BODY_SUBMITTED:
                   description: An empty or non-matching body was submitted.
-                  value: &ref_29
+                  value: &ref_30
                     code: RULE_INCORRECT_OR_EMPTY_BODY_SUBMITTED
                     message: An empty or non-matching body was submitted
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: &ref_30
+                  value: &ref_31
                     code: RULE_OUTSIDE_AMENDMENT_WINDOW
                     message: You are outside the amendment window
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
@@ -763,7 +774,7 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYMENT_ID:
                   description: The format of the supplied employment ID field is not valid.
-                  value: &ref_19
+                  value: &ref_20
                     code: FORMAT_EMPLOYMENT_ID
                     message: The provided employment ID is invalid
                 RULE_TAX_YEAR_RANGE_INVALID:
@@ -913,6 +924,15 @@ paths:
             Only in sandbox environment. See Test Data table for all header values.
           schema: *ref_6
           required: false
+        - name: suspend-temporal-validations
+          in: header
+          description: |
+            Only in the sandbox environment. When supplied and set to `true`, this header relaxes tax year validation rule to 
+            allow in-year submissions for endpoints configured for end-of-year submissions. Not supplying the header or setting 
+            it to `false` results in a `RULE_TAX_YEAR_NOT_ENDED` error for in-year submissions. In Production, the header is
+            ignored and normal validations apply.
+          schema: *ref_19
+          required: false
       requestBody:
         content:
           application/json:
@@ -1001,22 +1021,22 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYMENT_ID:
                   description: The format of the supplied employment ID field is not valid.
-                  value: *ref_19
+                  value: *ref_20
                 FORMAT_EMPLOYER_REF:
                   description: The format of the supplied employer ref is not valid.
-                  value: *ref_20
+                  value: *ref_21
                 FORMAT_EMPLOYER_NAME:
                   description: The format of the employer name is not valid.
-                  value: *ref_21
+                  value: *ref_22
                 FORMAT_START_DATE:
                   description: The format of the supplied start date field is not valid.
-                  value: *ref_22
+                  value: *ref_23
                 FORMAT_CESSATION_DATE:
                   description: The format of the supplied cessation date is not valid.
-                  value: *ref_23
+                  value: *ref_24
                 FORMAT_PAYROLL_ID:
                   description: The format of the supplied payroll ID field is not valid.
-                  value: *ref_24
+                  value: *ref_25
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -1027,19 +1047,19 @@ paths:
                   value: *ref_10
                 RULE_TAX_YEAR_NOT_ENDED:
                   description: The submission has been made before the tax year it relates to has ended.
-                  value: *ref_25
+                  value: *ref_26
                 RULE_START_DATE_AFTER_TAX_YEAR_END:
                   description: The employment is listed as starting after the tax year ended.
-                  value: *ref_26
+                  value: *ref_27
                 RULE_CESSATION_DATE_BEFORE_TAX_YEAR_START:
                   description: The employment is listed as ending before the tax year began.
-                  value: *ref_27
+                  value: *ref_28
                 RULE_CESSATION_DATE_BEFORE_START_DATE:
                   description: The cessation date is earlier than the start date.
-                  value: *ref_28
+                  value: *ref_29
                 RULE_INCORRECT_OR_EMPTY_BODY_SUBMITTED:
                   description: An empty or non-matching body was submitted.
-                  value: *ref_29
+                  value: *ref_30
                 RULE_UPDATE_FORBIDDEN:
                   description: The update for an HMRC held employment is not permitted.
                   value:
@@ -1047,7 +1067,7 @@ paths:
                     message: The update for an HMRC held employment is not permitted
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
                   description: The request did not match any available Sandbox data. Check that the supplied Gov-Test-Scenario is correct for this endpoint version. This error will only be returned in the Sandbox environment.
                   value: *ref_11
@@ -1219,7 +1239,7 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYMENT_ID:
                   description: The format of the supplied employment ID field is not valid.
-                  value: *ref_19
+                  value: *ref_20
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -1235,7 +1255,7 @@ paths:
                     message: A deletion of an HMRC held employment is not permitted
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
                   description: The request did not match any available Sandbox data. Check that the supplied Gov-Test-Scenario is correct for this endpoint version. This error will only be returned in the Sandbox environment.
                   value: *ref_11
@@ -1323,7 +1343,6 @@ paths:
         | N/A - DEFAULT                    | Simulates success response.                                       |
         | CUSTOM_EMPLOYMENT                | Simulates the scenario where a custom employment is submitted.    |
         | NOT_FOUND                        | Simulates the scenario where no data is found.                    |
-        | TAX_YEAR_NOT_ENDED               | Simulates the scenario where the tax year provided has not ended. |
         | REQUEST_CANNOT_BE_FULFILLED      | Simulates the scenario where the request cannot be fulfilled for various reasons other than the ones triggering other errors.|
         | OUTSIDE_AMENDMENT_WINDOW         | Simulates the scenario where request cannot be completed as it is outside the amendment window.|
       tags:
@@ -1367,6 +1386,15 @@ paths:
             Only in sandbox environment. See Test Data table for all header values.
           schema: *ref_6
           required: false
+        - name: suspend-temporal-validations
+          in: header
+          description: |
+            Only in the sandbox environment. When supplied and set to `true`, this header relaxes tax year validation rule to 
+            allow in-year submissions for endpoints configured for end-of-year submissions. Not supplying the header or setting 
+            it to `false` results in a `RULE_TAX_YEAR_NOT_ENDED` error for in-year submissions. In Production, the header is
+            ignored and normal validations apply.
+          schema: *ref_19
+          required: false
       security:
         - User-Restricted:
             - write:self-assessment
@@ -1409,7 +1437,7 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYMENT_ID:
                   description: The format of the supplied employment ID field is not valid.
-                  value: *ref_19
+                  value: *ref_20
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -1420,10 +1448,10 @@ paths:
                   value: *ref_10
                 RULE_TAX_YEAR_NOT_ENDED:
                   description: The submission has been made before the tax year it relates to has ended.
-                  value: *ref_25
+                  value: *ref_26
                 RULE_CUSTOM_EMPLOYMENT:
                   description: The Employment ID provided is for a custom (user-provided) employment.
-                  value: &ref_31
+                  value: &ref_32
                     code: RULE_CUSTOM_EMPLOYMENT
                     message: A custom employment cannot be ignored
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
@@ -1431,7 +1459,7 @@ paths:
                   value: *ref_11
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
         '403':
           description: Forbidden
           headers:
@@ -1516,7 +1544,6 @@ paths:
         | N/A - DEFAULT                    | Simulates success response.                                       |
         | CUSTOM_EMPLOYMENT                | Simulates the scenario where a custom employment is submitted.    |
         | NOT_FOUND                        | Simulates the scenario where no data is found.                    |
-        | TAX_YEAR_NOT_ENDED               | Simulates the scenario where the tax year provided has not ended. | 
         | REQUEST_CANNOT_BE_FULFILLED      | Simulates the scenario where the request cannot be fulfilled for various reasons other than the ones triggering other errors.|
         | OUTSIDE_AMENDMENT_WINDOW         | Simulates the scenario where request cannot be completed as it is outside the amendment window. |
       tags:
@@ -1560,6 +1587,15 @@ paths:
             Only in sandbox environment. See Test Data table for all header values.
           schema: *ref_6
           required: false
+        - name: suspend-temporal-validations
+          in: header
+          description: |
+            Only in the sandbox environment. When supplied and set to `true`, this header relaxes tax year validation rule to 
+            allow in-year submissions for endpoints configured for end-of-year submissions. Not supplying the header or setting 
+            it to `false` results in a `RULE_TAX_YEAR_NOT_ENDED` error for in-year submissions. In Production, the header is
+            ignored and normal validations apply.
+          schema: *ref_19
+          required: false
       security:
         - User-Restricted:
             - write:self-assessment
@@ -1602,7 +1638,7 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYMENT_ID:
                   description: The format of the supplied employment ID field is not valid.
-                  value: *ref_19
+                  value: *ref_20
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -1613,13 +1649,13 @@ paths:
                   value: *ref_10
                 RULE_TAX_YEAR_NOT_ENDED:
                   description: The submission has been made before the tax year it relates to has ended.
-                  value: *ref_25
+                  value: *ref_26
                 RULE_CUSTOM_EMPLOYMENT:
                   description: The Employment ID provided is for a custom (user-provided) employment.
-                  value: *ref_31
+                  value: *ref_32
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
                   description: The request did not match any available Sandbox data. Check that the supplied Gov-Test-Scenario is correct for this endpoint version. This error will only be returned in the Sandbox environment.
                   value: *ref_11
@@ -1740,7 +1776,7 @@ paths:
           description: |
             Specifies the source of data to be returned. If source is not provided,
             the latest submitted values will be returned.
-          schema: &ref_35
+          schema: &ref_36
             type: string
             enum:
               - user
@@ -1794,7 +1830,7 @@ paths:
                       source:
                         type: string
                         description: Specifies the source of data to be returned. `latest` will be removed in a future release.
-                        enum: &ref_32
+                        enum: &ref_33
                           - hmrc-held
                           - user
                           - latest
@@ -1928,7 +1964,7 @@ paths:
                           deductions:
                             type: object
                             description: Object containing details of deductions for a single employment.
-                            properties: &ref_33
+                            properties: &ref_34
                               studentLoans:
                                 type: object
                                 description: Object containing details of deductions against student loans.
@@ -1950,7 +1986,7 @@ paths:
                           benefitsInKind:
                             type: object
                             description: Object containing amount values of benefits received from a single employment.
-                            properties: &ref_34
+                            properties: &ref_35
                               accommodation:
                                 type: number
                                 description: The value of accommodation costs provided by the employer. The value must be between 0 and 99999999999.99 up to 2 decimal places.
@@ -2164,7 +2200,7 @@ paths:
                       source:
                         type: string
                         description: Specifies the source of data to be returned. `latest` will be removed in a future release.
-                        enum: *ref_32
+                        enum: *ref_33
                       customerAdded:
                         type: string
                         description: The date the employment data was added by the customer. Must conform to the format YYYY-MM-DDThh:mm:ss.SSSZ
@@ -2302,11 +2338,11 @@ paths:
                           deductions:
                             type: object
                             description: Object containing details of deductions for a single employment.
-                            properties: *ref_33
+                            properties: *ref_34
                           benefitsInKind:
                             type: object
                             description: Object containing amount values of benefits received from a single employment.
-                            properties: *ref_34
+                            properties: *ref_35
                         required:
                           - employer
                           - offPayrollWorker
@@ -2325,7 +2361,7 @@ paths:
                       source:
                         type: string
                         description: Specifies the source of data to be returned. `latest` will be removed in a future release.
-                        enum: *ref_32
+                        enum: *ref_33
                       customerAdded:
                         type: string
                         description: The date the employment data was added by the customer. Must conform to the format YYYY-MM-DDThh:mm:ss.SSSZ
@@ -2463,11 +2499,11 @@ paths:
                           deductions:
                             type: object
                             description: Object containing details of deductions for a single employment.
-                            properties: *ref_33
+                            properties: *ref_34
                           benefitsInKind:
                             type: object
                             description: Object containing amount values of benefits received from a single employment.
-                            properties: *ref_34
+                            properties: *ref_35
                         required:
                           - employer
                           - offPayrollWorker
@@ -2520,10 +2556,10 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYMENT_ID:
                   description: The format of the supplied employment ID field is not valid.
-                  value: *ref_19
+                  value: *ref_20
                 FORMAT_SOURCE:
                   description: The format of the supplied source is not valid.
-                  value: &ref_36
+                  value: &ref_37
                     code: FORMAT_SOURCE
                     message: The provided source is invalid
                 RULE_TAX_YEAR_RANGE_INVALID:
@@ -2622,7 +2658,6 @@ paths:
         | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
         | N/A - DEFAULT                     | Simulates success response.                                                                                                                                                                                                                                                                                                                                                                                                    |
         | NOT_FOUND                         | Simulates the scenario where no data is found.                                                                                                                                                                                                                                                                                                                                                                                 |
-        | TAX_YEAR_NOT_ENDED                | Simulates the scenario where the tax year provided has not ended.                                                                                                                                                                                                                                                                                                                                                              |
         | INVALID_SUBMISSION_PENSION_SCHEME | Simulates the scenario where customer with single employment source that has "occupational pension" indicator cannot submit benefit in kind if it contains anything other than medical insurance.                                                                                                                                                                                                                              |
         | STATEFUL                          | Performs a stateful create or update. <br><br> Note: this endpoint relies on the prior creation of a STATEFUL custom employment. If a relevant STATEFUL custom employment has not been created, a 404 MATCHING_RESOURCE_NOT_FOUND error is returned. <br><br> A custom employment with ‘occupationalPension = false’ must be created before you can submit deductions or benefitsInKind for the given National insurance number (nino), taxYear and employmentId. |
         | REQUEST_CANNOT_BE_FULFILLED       | Simulates the scenario where the request cannot be fulfilled for various reasons other than the ones triggering other errors.                                                                                                                                                                                                                                                                                                  |
@@ -2674,6 +2709,15 @@ paths:
             Only in sandbox environment. See Test Data table for all header values.
           schema: *ref_6
           required: false
+        - name: suspend-temporal-validations
+          in: header
+          description: |
+            Only in the sandbox environment. When supplied and set to `true`, this header relaxes tax year validation rule to 
+            allow in-year submissions for endpoints configured for end-of-year submissions. Not supplying the header or setting 
+            it to `false` results in a `RULE_TAX_YEAR_NOT_ENDED` error for in-year submissions. In Production, the header is
+            ignored and normal validations apply.
+          schema: *ref_19
+          required: false
       requestBody:
         content:
           application/json:
@@ -2712,11 +2756,11 @@ paths:
                         deductions:
                           type: object
                           description: Object containing details of deductions for a single employment.
-                          properties: *ref_33
+                          properties: *ref_34
                         benefitsInKind:
                           type: object
                           description: Object containing amount values of benefits received from a single employment.
-                          properties: *ref_34
+                          properties: *ref_35
                       required:
                         - pay
                   required:
@@ -2754,11 +2798,11 @@ paths:
                         deductions:
                           type: object
                           description: Object containing details of deductions for a single employment.
-                          properties: *ref_33
+                          properties: *ref_34
                         benefitsInKind:
                           type: object
                           description: Object containing amount values of benefits received from a single employment.
-                          properties: *ref_34
+                          properties: *ref_35
                         offPayrollWorker:
                           type: boolean
                           description: |-
@@ -2817,10 +2861,10 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYMENT_ID:
                   description: The format of the supplied employment ID field is not valid.
-                  value: *ref_19
+                  value: *ref_20
                 FORMAT_VALUE:
                   description: One or more values have been added with the incorrect format.
-                  value: &ref_37
+                  value: &ref_38
                     code: FORMAT_VALUE
                     message: The value must be between 0.00 and 99999999999.99
                 RULE_TAX_YEAR_RANGE_INVALID:
@@ -2833,10 +2877,10 @@ paths:
                   value: *ref_10
                 RULE_TAX_YEAR_NOT_ENDED:
                   description: The submission has been made before the tax year it relates to has ended.
-                  value: *ref_25
+                  value: *ref_26
                 RULE_INCORRECT_OR_EMPTY_BODY_SUBMITTED:
                   description: An empty or non-matching body was submitted.
-                  value: *ref_29
+                  value: *ref_30
                 MISSING_OFF_PAYROLL_WORKER:
                   description: The offPayrollWorker field was not provided; it must be provided for tax year 2023-24 or later.
                   value:
@@ -2854,7 +2898,7 @@ paths:
                     message: Data item submitted is invalid for a customer with an occupational pension and no other employment source - for example, employment expenses or benefit in kind (apart from medical insurance) are not valid.
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
                   description: The request did not match any available Sandbox data. Check that the supplied Gov-Test-Scenario is correct for this endpoint version. This error will only be returned in the Sandbox environment.
                   value: *ref_11
@@ -3026,7 +3070,7 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYMENT_ID:
                   description: The format of the supplied employment ID field is not valid.
-                  value: *ref_19
+                  value: *ref_20
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -3037,7 +3081,7 @@ paths:
                   value: *ref_10
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
                   description: The request did not match any available Sandbox data. Check that the supplied Gov-Test-Scenario is correct for this endpoint version. This error will only be returned in the Sandbox environment.
                   value: *ref_11
@@ -3152,7 +3196,7 @@ paths:
           description: |
             Specifies the source of data to be returned. If source is not provided,
             the latest submitted values will be returned.
-          schema: *ref_35
+          schema: *ref_36
           required: false
         - name: Accept
           in: header
@@ -3259,7 +3303,7 @@ paths:
                   value: *ref_8
                 FORMAT_SOURCE:
                   description: The format of the supplied source is not valid.
-                  value: *ref_36
+                  value: *ref_37
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -3400,6 +3444,15 @@ paths:
             Only in sandbox environment. See Test Data table for all header values.
           schema: *ref_6
           required: false
+        - name: suspend-temporal-validations
+          in: header
+          description: |
+            Only in the sandbox environment. When supplied and set to `true`, this header relaxes tax year validation rule to 
+            allow in-year submissions for endpoints configured for end-of-year submissions. Not supplying the header or setting 
+            it to `false` results in a `RULE_TAX_YEAR_NOT_ENDED` error for in-year submissions. In Production, the header is
+            ignored and normal validations apply.
+          schema: *ref_19
+          required: false
       requestBody:
         content:
           application/json:
@@ -3460,7 +3513,7 @@ paths:
                   value: *ref_8
                 FORMAT_VALUE:
                   description: One or more values have been added with the incorrect format.
-                  value: *ref_37
+                  value: *ref_38
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -3471,13 +3524,13 @@ paths:
                   value: *ref_10
                 RULE_TAX_YEAR_NOT_ENDED:
                   description: The submission has been made before the tax year it relates to has ended.
-                  value: *ref_25
+                  value: *ref_26
                 RULE_INCORRECT_OR_EMPTY_BODY_SUBMITTED:
                   description: An empty or non-matching body was submitted.
-                  value: *ref_29
+                  value: *ref_30
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
                   description: The request did not match any available Sandbox data. Check that the supplied Gov-Test-Scenario is correct for this endpoint version. This error will only be returned in the Sandbox environment.
                   value: *ref_11
@@ -3650,7 +3703,7 @@ paths:
                   value: *ref_10
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
                   description: The request did not match any available Sandbox data. Check that the supplied Gov-Test-Scenario is correct for this endpoint version. This error will only be returned in the Sandbox environment.
                   value: *ref_11
@@ -3803,7 +3856,7 @@ paths:
                     example: '2021-04-06T09:37:17.542Z'
                   shareOption:
                     type: array
-                    items: &ref_38
+                    items: &ref_39
                       type: object
                       description: Financial details about share options income.
                       properties:
@@ -3912,7 +3965,7 @@ paths:
                         - taxableAmount
                   sharesAwardedOrReceived:
                     type: array
-                    items: &ref_39
+                    items: &ref_40
                       type: object
                       description: Financial details about shares awarded or received income
                       properties:
@@ -4011,7 +4064,7 @@ paths:
                   disability:
                     type: object
                     description: An object that holds the key value for disability deductions.
-                    properties: &ref_40
+                    properties: &ref_41
                       customerReference:
                         type: string
                         description: An optional user supplied reference. Must not be empty or contain only whitespace.
@@ -4024,12 +4077,12 @@ paths:
                         multipleOf: 0.01
                         minimum: 0
                         maximum: 99999999999.99
-                    required: &ref_41
+                    required: &ref_42
                       - amountDeducted
                   foreignService:
                     type: object
                     description: An object that holds the key value for foreign service deductions.
-                    properties: &ref_42
+                    properties: &ref_43
                       customerReference:
                         type: string
                         description: A reference the user supplies to identify the foreign income. Must not be empty or contain only whitespace.
@@ -4042,11 +4095,11 @@ paths:
                         multipleOf: 0.01
                         minimum: 0
                         maximum: 99999999999.99
-                    required: &ref_43
+                    required: &ref_44
                       - amountDeducted
                   lumpSums:
                     type: array
-                    items: &ref_44
+                    items: &ref_45
                       type: object
                       description: An array that holds details of lump sum income
                       properties:
@@ -4337,23 +4390,23 @@ paths:
               properties:
                 shareOption:
                   type: array
-                  items: *ref_38
+                  items: *ref_39
                 sharesAwardedOrReceived:
                   type: array
-                  items: *ref_39
+                  items: *ref_40
                 disability:
                   type: object
                   description: An object that holds the key value for disability deductions.
-                  properties: *ref_40
-                  required: *ref_41
+                  properties: *ref_41
+                  required: *ref_42
                 foreignService:
                   type: object
                   description: An object that holds the key value for foreign service deductions.
-                  properties: *ref_42
-                  required: *ref_43
+                  properties: *ref_43
+                  required: *ref_44
                 lumpSums:
                   type: array
-                  items: *ref_44
+                  items: *ref_45
             examples:
               example-1:
                 description: Default Example
@@ -4398,7 +4451,7 @@ paths:
                   value: *ref_8
                 FORMAT_VALUE:
                   description: One or more values have been added with the incorrect format.
-                  value: *ref_37
+                  value: *ref_38
                 FORMAT_CUSTOMER_REF:
                   description: The format of the supplied customer reference is not valid.
                   value:
@@ -4406,10 +4459,10 @@ paths:
                     message: The provided customer reference is invalid
                 FORMAT_EMPLOYER_NAME:
                   description: The format of the employer name is not valid.
-                  value: *ref_21
+                  value: *ref_22
                 FORMAT_EMPLOYER_REF:
                   description: The format of the supplied employer ref is not valid.
-                  value: *ref_20
+                  value: *ref_21
                 FORMAT_DATE:
                   description: The supplied date format is not valid.
                   value:
@@ -4445,7 +4498,7 @@ paths:
                   value: *ref_10
                 RULE_INCORRECT_OR_EMPTY_BODY_SUBMITTED:
                   description: An empty or non-matching body was submitted.
-                  value: *ref_29
+                  value: *ref_30
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
                   description: The request did not match any available Sandbox data. Check that the supplied Gov-Test-Scenario is correct for this endpoint version. This error will only be returned in the Sandbox environment.
                   value: *ref_11
@@ -4456,7 +4509,7 @@ paths:
                     message: The specified date range is invalid
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
         '403':
           description: Forbidden
           headers:
@@ -4605,7 +4658,7 @@ paths:
                   value: *ref_10
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
                   description: The request did not match any available Sandbox data. Check that the supplied Gov-Test-Scenario is correct for this endpoint version. This error will only be returned in the Sandbox environment.
                   value: *ref_11
@@ -4708,7 +4761,7 @@ paths:
           description: |
             The tax year the data applies to. 
             The start year and end year must not span two tax years. The minimum tax year is 2025-26. No gaps are allowed, for example, 2025-27 is not valid.
-          schema: &ref_45
+          schema: &ref_46
             type: string
             example: 2025-26
           required: true
@@ -4799,7 +4852,7 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYMENT_ID:
                   description: The format of the supplied employment ID field is not valid.
-                  value: *ref_19
+                  value: *ref_20
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -4887,7 +4940,7 @@ paths:
           description: |
             The tax year the data applies to. 
             The start year and end year must not span two tax years. The minimum tax year is 2025-26. No gaps are allowed, for example, 2025-27 is not valid.
-          schema: *ref_45
+          schema: *ref_46
           required: true
         - name: employmentId
           in: path
@@ -4981,10 +5034,10 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYMENT_ID:
                   description: The format of the supplied employment ID field is not valid.
-                  value: *ref_19
+                  value: *ref_20
                 RULE_INCORRECT_OR_EMPTY_BODY_SUBMITTED:
                   description: An empty or non-matching body was submitted.
-                  value: *ref_29
+                  value: *ref_30
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -4992,12 +5045,12 @@ paths:
                   description: |
                     The specified tax year is not supported. 
                     The tax year specified is before the minimum tax year value.
-                  value: &ref_46
+                  value: &ref_47
                     code: RULE_TAX_YEAR_NOT_SUPPORTED
                     message: The tax year specified does not lie within the supported range
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
                   description: The request did not match any available Sandbox data. Check that the supplied Gov-Test-Scenario is correct for this endpoint version. This error will only be returned in the Sandbox environment.
                   value: *ref_11
@@ -5056,7 +5109,7 @@ paths:
           description: |
             The tax year the data applies to. 
             The start year and end year must not span two tax years. The minimum tax year is 2025-26. No gaps are allowed, for example, 2025-27 is not valid.
-          schema: *ref_45
+          schema: *ref_46
           required: true
         - name: employmentId
           in: path
@@ -5121,7 +5174,7 @@ paths:
                   value: *ref_8
                 FORMAT_EMPLOYMENT_ID:
                   description: The format of the supplied employment ID field is not valid.
-                  value: *ref_19
+                  value: *ref_20
                 RULE_TAX_YEAR_RANGE_INVALID:
                   description: Tax year range invalid. A tax year range of one year is required.
                   value: *ref_9
@@ -5129,10 +5182,10 @@ paths:
                   description: |
                     The specified tax year is not supported. 
                     The tax year specified is before the minimum tax year value.
-                  value: *ref_46
+                  value: *ref_47
                 RULE_OUTSIDE_AMENDMENT_WINDOW:
                   description: The request cannot be completed as you are outside the amendment window.
-                  value: *ref_30
+                  value: *ref_31
                 RULE_INCORRECT_GOV_TEST_SCENARIO:
                   description: The request did not match any available Sandbox data. Check that the supplied Gov-Test-Scenario is correct for this endpoint version. This error will only be returned in the Sandbox environment.
                   value: *ref_11
